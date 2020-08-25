@@ -1,0 +1,39 @@
+{% extends "otree/Page.html" %}
+{% load staticfiles otree %}
+
+{% block app_styles %}
+	{% include 'mmc_rep_intro_off_TSM/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+	Payment (Page 6 of 6)
+{% endblock %}
+
+{% block content %}
+	<div class="description">
+		<p>
+			You will be paid in the following way:
+		</p>
+		<ul>
+			<li>
+				Total Points in a Round = Sum of Points in Red Game over all periods in the round + Sum of Points in Blue Game over all periods in the round
+			</li>
+			<br>
+			<li>
+				Total Points in Experiment = Sum of Total Points in every round. (At the end of the experiment, you can see the total points that you earned in the experiment and its dollar equivalent.)
+			</li>
+			<br>
+			<li>
+				Total Payment from Session = Participation payment + Quiz payment + Dollar equivalent of total points from experiment
+			</li>
+		</ul>
+		<p style="text-align: center;"> <br/>
+			Please press the ''Start Quiz'' button below to proceed to the Quiz.
+			<br>
+			<button class="otree-btn-next btn btn-primary" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+				Start Quiz
+			</button>
+		</p>
+	</div>
+
+{% endblock%}

@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Payment
+{% endblock %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_TAM/CSS_details.html' %}
+
+{% endblock%}
+
+{% block content %}
+
+	<div class="card-body">
+		<p style="text-align: center;"><br/>
+			The Participation Fee is ${{ myParticipation }}. From the quiz you received ${{ myQuiz }}.
+		</p>
+		<p style="text-align: center;"><br/>
+			From the experiment you have received {{ myPoints }}. The conversion rate is $1 for every {{ conversionRate }} points. You will receive {{ myTotalPayoff }} in total.
+		</p>
+	</div>
+
+{% endblock %}

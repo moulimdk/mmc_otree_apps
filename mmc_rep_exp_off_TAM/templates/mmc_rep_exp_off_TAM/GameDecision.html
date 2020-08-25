@@ -1,0 +1,172 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Choose Your Actions
+{% endblock %}
+
+{% block app_styles %}
+	{% include 'mmc_rep_exp_off_TAM/CSS_details.html' %}
+	<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+	<div class="description" >
+		
+		<p style="text-align: center; font-size: 24px;">Round Number #{{ roundNumber }}</p>
+
+		<h3 style="text-align: center; font-size: 24px;">Point Tables</h3>
+
+		{% include  'mmc_rep_exp_off_TAM/Payofftables.html' %}
+
+		<hr style="clear:both;">
+
+		<h3 style="text-align: center; font-size: 24px;">History Tables</h3>
+
+		{% include 'mmc_rep_exp_off_TAM/HistoryTable.html' %}
+
+		<hr style="clear:both;">
+
+		<h3 style="text-align: center; font-size: 24px;">Action Buttons</h3>
+
+		{% include 'mmc_rep_exp_off_TAM/Decision.html' %}
+
+		<hr style="clear:both;">
+
+		<input type="hidden" name='myChoiceR' value=0 id="test_1" />
+		<input type="hidden" name='myChoiceB' value=0 id="test_2" />
+
+	    <p style="text-align: center;"><br/>
+			<button class="otree-btn-next btn btn-primary" id="Confirm" style="display: inline-block; font-family: Proxima Nova; font-size: 20px;" onclick="Confirmation()">
+				Confirm Actions
+			</button>
+		</p>
+		
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+	
+	{% include  'mmc_rep_exp_off_TAM/Scripts.html' %}
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		
+		hide("Confirm");
+
+		getPayoffs();
+		
+		var pN = ({{ periodNumber|json }});
+
+		var clicks1=0;
+		var clicks2=0;
+		var choice1=0;
+		var choice2=0;
+
+		if (pN > 1) {
+			console.log(pN);
+			showHistory(pN);
+			showCurrentPeriodEmpty(pN);
+		}
+		else {
+			showCurrentPeriodEmpty(pN);
+		}
+
+		function jQueryMain ()
+		    {
+		        $("#YourContentDiv").scrollLeft($("#YourContentDiv").width());
+
+		        $(window).scrollLeft($(window).width());
+		    }
+
+
+    	$(document).ready (jQueryMain);
+
+		function addClick1A() {
+			clicks1=clicks1+1;
+			if (clicks1 >= 1 && clicks2 >= 1) {
+				showInline("Confirm");
+				enableButton("Confirm");
+				}
+			
+			choice1 = document.getElementById("myChoice1A").value;
+			document.getElementById("FChoice_1").innerHTML="A";
+			document.getElementById("FChoice_1").setAttribute("class", "abox");
+		}
+
+		function addClick1B() {
+			clicks1=clicks1+1;
+			if (clicks1 >= 1 && clicks2 >= 1) {
+				showInline("Confirm");
+				enableButton("Confirm");
+				}
+			
+			choice1 = document.getElementById("myChoice1B").value;
+			document.getElementById("FChoice_1").innerHTML="B";
+			document.getElementById("FChoice_1").setAttribute("class", "bbox");
+		}
+
+		function addClick2A() {
+			clicks2=clicks2+1;
+			if (clicks1 >= 1 && clicks2 >= 1) {
+				showInline("Confirm");
+				enableButton("Confirm");
+				}
+			
+			choice2 = document.getElementById("myChoice2A").value;
+			document.getElementById("FChoice_2").innerHTML="W";
+			document.getElementById("FChoice_2").setAttribute("class", "Wbox");
+		}
+
+		function addClick2B() {
+			clicks2=clicks2+1;
+			if (clicks1 >= 1 && clicks2 >= 1) {
+				showInline("Confirm");
+				enableButton("Confirm");
+				}
+			
+			choice2 = document.getElementById("myChoice2B").value;
+			document.getElementById("FChoice_2").innerHTML="Y";
+			document.getElementById("FChoice_2").setAttribute("class", "Ybox");
+		}
+
+		function hide(target) {
+			var x = document.getElementById(target);
+			x.style.display = "none";
+		}
+
+		function showInline(target) {
+			var x = document.getElementById(target);
+			x.style.display = "inline-block";
+		}
+
+		function enableButton(target) {
+			var x = document.getElementById(target);
+			x.style.pointerEvents="all";
+		}
+
+		function Confirmation() {
+			
+			document.getElementById("test_1").value=choice1;
+			document.getElementById("test_2").value=choice2;
+
+		}
+
+	    $(function () {
+	        $('.otree-timer__time-left').on('update.countdown', function (event) {
+	            if (event.offset.totalSeconds === 30) {
+	                $('.otree-timer').show();
+	            }
+	        });
+	    });
+
+	</script>
+	
+{% endblock %}

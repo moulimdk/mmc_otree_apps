@@ -1,0 +1,63 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Begin Experiment
+{% endblock %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_off_TSM/CSS_details.html' %}
+	    
+{% endblock%}
+
+{% block content %}
+
+	<div class="description">
+		<h3>
+			Reminder
+		</h3>
+		<ul>
+			<li>
+                At the start of each round, you will be paired with one other randomly chosen participant who we will refer to as Other.
+            </li>
+            <br>
+            <li>
+                In each period of a round you will participate in two games simultaneously (<div class="redbox">Red Game</div> and <div class="bluebox">Blue Game</div>) with Other.
+            </li>
+            <br>
+            <li>
+            	Each round will last for a random number of periods.
+            </li>
+            <br>
+            <li>
+                In the experiment, you will work with points.  Today’s exchange rate is {{ exRate }} Points = $1.
+            </li>
+		</ul>
+		<br>
+		<h3 style="text-align: center;">
+			Points Tables
+		</h3>	
+
+		{% include  'mmc_rep_exp_off_TSM/Payofftables.html' %}
+
+		<hr style="clear:both;">
+		
+		<p style="text-align: center;">
+	       	<button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+	            Begin Experiment
+	       	</button>
+	    </p>
+	</div>
+	
+{% endblock %}
+
+{% block scripts %}
+
+	{% include  'mmc_rep_exp_off_TSM/Scripts.html' %}
+
+	<script type="text/javascript">
+		getPayoffs();
+	</script>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Payment
+{% endblock %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_off_TSS/CSS_details.html' %}
+	  
+{% endblock%}
+
+{% block content %}
+
+	<div class="description">
+		<p style="text-align: center;"><br/>
+			The Participation Fee is ${{ myParticipation }}. From the quiz you received ${{ myQuiz }}.
+		</p>
+		<p style="text-align: center;"><br/>
+			From the experiment you have received {{ myPoints }} points. The conversion rate is $1 for every {{ conversionRate }} points. You will receive {{ myTotalPayoff }} in total.
+		</p>
+		<p style="text-align: center;">
+	       	<button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+	            Anonymous Survey
+	       	</button>
+	    </p>
+	</div>
+
+{% endblock %}

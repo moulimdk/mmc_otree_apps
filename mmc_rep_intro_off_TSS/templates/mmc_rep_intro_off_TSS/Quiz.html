@@ -1,0 +1,99 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+	{% include 'mmc_rep_intro_off_TSS/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+    Quiz
+{% endblock %}
+
+{% block content %}
+<div class="description">
+
+	{{ statement_1 }}
+	
+	{% formfield player.ans_choice_1 label = ""%}
+
+	{{ statement_2 }}
+
+	{% formfield player.ans_choice_2 label = ""%}
+
+	{{ statement_3 }}
+
+	{% formfield player.ans_choice_3 label = ""%}
+
+	<div style="border: none;">
+        <h3 style="text-align: center;">Points Tables</h3>
+        {% include 'mmc_rep_intro_off_TSS/Payofftables.html' %}
+
+        <hr style="clear:both;">
+    </div>
+
+    {{ statement_4 }}
+
+	{% formfield player.ans_choice_4 label = ""%}
+
+	{{ statement_6 }}
+
+	{% formfield player.ans_choice_6 label = ""%}
+
+    <div style="border: none;">
+		<h3 style="text-align: center;">History Tables</h3>
+		{% include 'mmc_rep_intro_off_TSS/HistoryTableExample.html' %}
+		<hr style="clear:both;">
+	</div>
+
+
+	{{ statement_5 }} 
+
+	{% formfield player.ans_choice_5 label = ""%}
+
+	{{ statement_7 }}
+
+	{% formfield player.ans_choice_7 label = ""%}
+
+	{{ statement_8 }}
+
+	{% formfield player.ans_choice_8 label = ""%}
+
+	<p style="text-align: center;"><br/>
+		<button class="otree-btn-next btn btn-primary" id="Confirm" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+			Submit Answer
+		</button>
+	</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+	<script type="text/javascript">
+
+        getPayoffs()
+
+        function getPayoffs() {
+
+            document.getElementById("00_11").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_11").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_11").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_11").innerHTML=({{ payoff_matrix1|json }})[1][1];
+            document.getElementById("00_21").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_21").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_21").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_21").innerHTML=({{ payoff_matrix1|json }})[1][1];
+
+            document.getElementById("00_12").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_12").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_12").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_12").innerHTML=({{ payoff_matrix2|json }})[1][1];
+            document.getElementById("00_22").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_22").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_22").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_22").innerHTML=({{ payoff_matrix2|json }})[1][1];
+
+        }
+
+    </script>
+	
+{% endblock %}

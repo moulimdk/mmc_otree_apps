@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block app_styles %}
+    {% include 'mmc_rep_intro_off_TAM/CSS_details.html' %}
+    <style type="text/css">
+        .otree-timer{
+            display: none
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block content %}
+<div class="description">
+    <p>
+        Today's session is expected to last another {{ minExpTime }} to {{ maxExpTime }} minutes.
+    </p>
+    <p>
+    	You will start with the instructions and a quiz.
+    </p>
+	<p>
+        There are <b>six (6)</b> pages in the instructions. You have <b>{{ time_intro }} minutes</b> to read the instructions. 
+    </p>
+    <p style="text-align: center;">
+       <button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+            Instructions
+       </button>
+    </p>
+</div>
+{% endblock %}

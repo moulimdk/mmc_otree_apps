@@ -1,0 +1,59 @@
+{% extends "otree/WaitPage.html" %}
+{% load otree %}
+
+{% block title %}
+    Waiting for Others
+{% endblock %}
+
+{% block content %}
+
+    <div class="description" style="margin-top: 0px;">
+		
+		<p style="text-align: center; font-size: 24px;">
+			Round Number #{{ roundNumber }}
+		</p>
+
+		<h3 style="text-align: center; font-size: 24px;">
+			Point Tables
+		</h3>
+
+		<p>
+			{% include  'mmc_rep_exp_TSS/Payofftables.html' %}
+		</p>
+
+		<hr style="clear:both;">
+
+		<h3 style="text-align: center; font-size: 24px;">
+			History Tables
+		</h3>
+
+		<p>
+			{% include 'mmc_rep_exp_TSS/HistoryTable.html' %}
+		</p>
+
+		<hr style="clear:both;">
+
+	</div>
+
+{% endblock %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_TSS/CSS_details.html' %}
+
+{% endblock%}
+
+{% block app_scripts %}
+
+	{% include  'mmc_rep_exp_TSS/Scripts.html' %}
+	<script type="text/javascript">
+		getPayoffs();
+
+		var pN = ({{ periodNumber|json }});
+
+		showHistory(pN);
+		showCurrentPeriod(pN);
+		
+	</script>
+	
+{% endblock %}

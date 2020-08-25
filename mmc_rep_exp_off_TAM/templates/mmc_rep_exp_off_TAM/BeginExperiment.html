@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Begin Experiment
+{% endblock %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_off_TAM/CSS_details.html' %}
+	<style type="text/css">
+        .otree-timer{
+            display: none
+        }
+    </style>
+    
+{% endblock%}
+
+{% block content %}
+
+	<div class="description">
+		<h3 style="text-align: center;">
+			Point Tables
+		</h3>	
+
+		{% include  'mmc_rep_exp_off_TAM/Payofftables.html' %}
+
+		<hr style="clear:both;">
+		
+		<p style="text-align: center;">
+	       	<button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+	            Experiment
+	       	</button>
+	    </p>
+	</div>
+	
+{% endblock %}
+
+{% block scripts %}
+
+	{% include  'mmc_rep_exp_off_TAM/Scripts.html' %}
+
+	<script type="text/javascript">
+		getPayoffs();
+	</script>
+
+	
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "otree/Page.html" %}
+{% load staticfiles otree %}
+
+{% block app_styles %}
+	{% include 'mmc_rep_intro_off_TAM/CSS_details.html' %}
+	<style type="text/css">
+        .otree-timer{
+            display: none
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+	Quiz Result
+{% endblock %}
+
+{% block content %}
+<div class="description">
+	<p>
+		You have correctly answered {{ correct_ans }} out of {{ quiz_ques }} questions.
+	</p>
+	<p>
+		You will get ${{ quiz_pay }} from the quiz.
+	</p>
+	<p style="text-align: center;">
+       <button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+            Experiment
+       </button>
+    </p>
+</div>
+{% endblock %}

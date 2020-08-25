@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Begin Experiment
+{% endblock %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_TSS/CSS_details.html' %}
+
+{% endblock%}
+
+{% block content %}
+	
+	<div class="description">
+		<h3 style="text-align: center;">
+			Point Tables
+		</h3>
+
+		{% include  'mmc_rep_exp_TSS/Payofftables.html' %}
+
+		<hr style="clear:both;">
+
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	{% include  'mmc_rep_exp_TSS/Scripts.html' %}
+
+	<script type="text/javascript">
+		getPayoffs();
+	</script>
+
+	
+{% endblock %}

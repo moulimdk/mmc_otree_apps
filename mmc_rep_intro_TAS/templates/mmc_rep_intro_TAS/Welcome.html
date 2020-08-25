@@ -1,0 +1,96 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block app_styles %}
+    {% include 'mmc_rep_intro_TAS/CSS_details.html' %}
+    <style type="text/css">
+        .otree-timer{
+        position: fixed;
+        font-family: Proxima Nova;
+    }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Instructions (Page 1) 
+{% endblock %}
+
+{% block content %}
+    <div  class="description">
+        <h3> Session Overview </h3>
+        <p> 
+            You are about to participate in an experiment in the economics of decision-making. If you read the instructions carefully, you can earn a large amount of money that will be paid to you using your Venmo account after you complete the session. 
+        </p>
+        <p>
+            In this session you will receive at least the participation payment of ${{ participation_fee }}. The average earning will be ${{ avg_earn }} and actual earning may vary between ${{ low_earn }}-${{ high_earn }}.
+        </p>
+        <br>
+        <p>
+            The session will follow the timeline shown below.
+        </p>
+        <p>
+        <div class="timeline" style="border: 1px solid black">
+            <div class="timeline-line">
+                <div class="timepoints" style="left: 0.1%; text-align: center;">
+                    1
+                    <div class="timetask" style="bottom: 110%;">
+                        Instructions
+                    </div>
+                </div>
+                <div class="timepoints" style="left: 32%; text-align: center;">
+                    2
+                    <div class="timetask" style="top: 110%; left: -200%; width: 500%;">
+                        Quiz
+                    </div>
+                </div>
+                <div class="timepoints" style="left: 65%; text-align: center;">
+                    3
+                    <div class="timetask" style="bottom: 110%; left: -110%">
+                        Experiment
+                    </div>
+                </div>
+                <div class="timepoints" style="right: 0.1%; text-align: center;">
+                    4
+                    <div class="timetask" style="top: 110%; right:0.1%;">
+                        Survey
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute; top: 80%; width: 100%; padding: 0px; text-align: center;" >
+                <h3>Session Timeline</h3>
+            </div>
+        </div>
+        <br>
+        <ul> <h3>Details about Quiz</h3>
+            <li>
+                At the end of the instructions, you will take a quiz. There will be <b>{{ num_ques }}</b> questions in the quiz. You can earn ${{ quiz_fee }} for each question you answer <b>correctly</b>.
+            </li>
+            <li>
+                After you submit your answers for the quiz you will proceed to the quiz payment page which will show the number of questions you answer correctly and the money you earn in the quiz.
+            </li>
+            <li>
+                You will have <b>{{ time_quiz }} minutes</b> to take the quiz. At the end of {{ time_quiz }} minutes, your answers will be submitted and you will proceed to the quiz payment page.
+            </li>
+            <li>
+                The experiment will begin after the quiz.
+            </li>
+        </ul>
+        <br>
+        <p style="text-align: center;">
+    	   <button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+                Page 2
+           </button>
+        </p>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        var ch = $('.timepoints').height();
+        $('.timepoints').css({
+        'width': ch + 'px'
+        });
+    </script>
+{% endblock %}

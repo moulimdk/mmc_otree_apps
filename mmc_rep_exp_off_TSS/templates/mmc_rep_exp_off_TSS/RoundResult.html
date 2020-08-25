@@ -1,0 +1,80 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_off_TSS/CSS_details.html' %}
+	
+{% endblock %}
+
+{% block title %}
+    Round Result
+{% endblock %}
+
+{% block content %}
+
+	<div class="description">
+		
+		<p style="text-align: center; font-size: 24px;">
+			Round No. #{{ roundNumber }}
+		</p>
+
+		<p>
+			The round has ended. The following tables show the history of the round.
+		</p>
+
+		<h3 style="text-align: center;">History Tables</h3>
+
+		{% include 'mmc_rep_exp_off_TSS/HistoryTable.html' %}
+
+		<hr style="clear:both;">
+
+		<div id="NextButton" style="text-align: center;">
+			<button class="btn btn-primary btn-large" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+	            Next Round
+	       	</button>
+		</div>
+	    <div id="Payment" style="text-align: center;">
+	    	<button class="btn btn-primary btn-large"  style="display: inline-block; font-size: 22px; background-color: #024b30;">
+	            Payment Details
+	       	</button>
+	    </div>
+
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	{% include  'mmc_rep_exp_off_TSS/Scripts.html' %}
+
+	<script type="text/javascript">
+
+		hide("NextButton");
+		hide("Payment");
+
+		var pN = ({{ periodNumber|json }});
+		console.log(pN);
+		showHistoryEnd(pN);
+
+		var last = ({{ lastRound|json }});
+		
+		if (last === 0) {
+			show("NextButton");
+		} else {
+			show("Payment");
+		}
+
+		function hide(target) {
+			var x = document.getElementById(target);
+			x.style.display = "none";
+		}
+
+		function show(target) {
+			var x = document.getElementById(target);
+			x.style.display = "block";
+		}
+
+	</script>
+
+{% endblock %}

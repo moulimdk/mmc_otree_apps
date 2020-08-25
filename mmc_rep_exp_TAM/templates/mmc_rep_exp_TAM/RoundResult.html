@@ -1,0 +1,72 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+	{% include 'mmc_rep_exp_TAM/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+    Round Result
+{% endblock %}
+
+{% block content %}
+
+	<div class="description">
+
+		<div id = "abandoned_R">
+		
+			Other Red has left the Round. You do not have to choose an action for the <div class="redbox">Red Game</div>.
+
+		</div>
+		<div id = "abandoned_B">
+				
+			Other Blue has left the Round. You do not have to choose an action for the <div class="bluebox">Blue Game</div>.
+
+		</div>
+		
+		<p style="text-align: center; font-size: 24px;">Round No. #{{ roundNumber }}</p>
+
+		<h3 style="text-align: center;">History Tables</h3>
+
+		{% include 'mmc_rep_exp_TAM/HistoryTable.html' %}
+
+		<hr style="clear:both;">
+
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	{% include  'mmc_rep_exp_TAM/Scripts.html' %}
+
+	<script type="text/javascript">
+
+		hide("abandoned_R");
+		hide("abandoned_B");
+
+		if ( {{ abandoned_R }} == 1 ) {
+			showInline("abandoned_R");
+		};
+
+		if ( {{ abandoned_B }} == 1 ) {
+			showInline("abandoned_B");
+		};
+
+		var pN = ({{ periodNumber|json }});
+		console.log(pN);
+		showHistoryEnd(pN);
+
+		function hide(target) {
+			var x = document.getElementById(target);
+			x.style.display = "none";
+		};
+
+		function showInline(target) {
+			var x = document.getElementById(target);
+			x.style.display = "inline-block";
+		};
+
+	</script>
+
+{% endblock %}

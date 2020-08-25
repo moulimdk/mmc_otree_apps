@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block app_styles %}
+    {% include 'mmc_rep_intro_off_TSS/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+    How Rounds Work (Page 2 of 6)
+{% endblock %}
+
+{% block content %}
+	<div class="description">
+        <ul style="text-align: left;">
+            <li>
+                There will be <b>{{ Rounds }} Rounds</b> in the experiment.
+            </li>
+            <br>
+            <li>
+                Each round will last for a random number of <b>Periods</b>. The number of periods in each round will be determined randomly using the following procedure:
+                <ul style="text-align: left;">
+                    <br>
+                    <li>
+                        At the end of each period the computer will generate a random number between 1 and {{ dieN }} ({1, 2,..., {{ dieN }}}) with each number being equally likely.
+                    </li>
+                    <br>
+                    <li>
+                        If the computer generates a number less than {{ thres }}, then the <b>Round continues</b> for at least one more period (<b>{{ contProb }}% Probability</b>).
+                    </li>
+                    <br>
+                    <li>
+                        If the computer generates a number equal to {{ thres }} or greater, then the <b>Round ends</b> (<b>{{ endProb }}% Probability</b>).
+                    </li>
+                </ul>
+            </li>
+            <br>
+            <li>
+                At the <b>start of each round</b>, you will be paired with <b>two other randomly chosen participants</b>. We will refer to the participants you will be paired with as <b>Other Red</b> and <b>Other Blue</b>.
+            </li>
+            <br>
+            <li>
+                In each period of a round you will participate in <b>two games simultaneously</b> (<div class="redbox">Red Game</div> and <div class="bluebox">Blue Game</div>). You will participate in <div class="redbox">Red Game</div> with <b>Other Red</b> and <div class="bluebox">Blue Game</div> with <b>Other Blue</b> respectively.
+            </li>
+        </ul>
+        <br>
+        <p style="text-align: center;">
+           <button class="otree-btn-next btn btn-primary" id="NextButton" style="display: inline-block;  font-size: 22px; background-color: #024b30;">
+                Go to Page 3
+            </button>
+        </p>
+    </div>
+{% endblock %}

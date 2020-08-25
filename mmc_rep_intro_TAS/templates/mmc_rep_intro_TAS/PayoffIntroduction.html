@@ -1,0 +1,70 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block app_styles %}
+    {% include 'mmc_rep_intro_TAS/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+    Instructions (Page 2)
+{% endblock %}
+
+{% block content %}
+	<div class="description">
+        <h3> How Rounds Work </h3>
+        <ul style="text-align: left;">
+            <li>
+                In the experiment, you will work with Points. At the end of the experiment, Points will be converted to Dollars.  Today’s exchange rate is {{ exRate }} Points = $1
+            </li>
+            <li>
+                The experiment is made up of {{ Rounds }} <b>Rounds</b>.
+            </li>
+            <li>
+                Each round will last for a random number of <b>Periods</b>:
+                <ul style="text-align: left;">
+                    <li>
+                        At the end of each period the computer will generate a random number between 1 and {{ dieN }} ({1, 2,..., {{ dieN }}}) with each number being equally likely.
+                    </li>
+                    <li>
+                        If the computer generates a number less than {{ thres }}, then the <b>Round continues</b> for at least one more period (<b>{{ contProb }}% Probability</b>).
+                    </li>
+                    <li>
+                        If the computer generates a number equal to {{ thres }} or greater, then the <b>Round ends</b> (<b>{{ endProb }}% Probability</b>).
+                    </li>
+                </ul>
+            </li>
+            <li>
+                In each period of a round you will participate in two games <div class="redbox">Red Game</div> and <div class="bluebox">Blue Game</div> simultaneously. You will participate in each game with a different participant.
+            </li>
+            <li>
+                At the start of each round, you will be paired with <b>two other randomly chosen participants</b>, one for <div class="redbox">Red Game</div> and one for <div class="bluebox">Blue Game</div>. We will refer to the participant you will be paired with for <div class="redbox">Red Game</div> as <b>Other Red</b> and the participant you will be paired with for <div class="bluebox">Blue Game</div> as <b>Other Blue</b>.
+            </li>
+            <li>
+                You will then participate in <div class="redbox">Red Game</div> and <div class="bluebox">Blue Game</div> simultaneously for a random number of periods with Other Red and Other Blue respectively.
+            </li>
+            <li>
+                What happens when you can not be paired with other participants in a round?
+            </li>
+            <ul>
+                <li>
+                    You will be informed if you could not be paired.
+                </li>
+                <li>
+                    You will be allotted {{ expPoints_Red }} points for <div class="redbox">Red Game</div> for each period of that round.
+                </li>
+                <li>
+                    You will be allotted {{ expPoints_Blue }} points for <div class="bluebox">Blue Game</div> for each period of that round.
+                </li>
+            </ul>
+        </ul>
+        <p>
+            In the next page we will explain what the games are in detail.
+        </p>
+        <br>
+        <p style="text-align: center;">
+           <button class="otree-btn-next btn btn-primary" id="NextButton" style="display: inline-block;  font-size: 22px; background-color: #024b30;">
+                Page 3
+            </button>
+        </p>
+</div>
+{% endblock %}

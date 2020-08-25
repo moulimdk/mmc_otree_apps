@@ -1,0 +1,63 @@
+{% extends "otree/Page.html" %}
+{% load staticfiles otree %}
+
+{% block app_styles %}
+	{% include 'mmc_rep_intro_TSS/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+	Instructions (Page 6)
+{% endblock %}
+
+{% block content %}
+	<div class="description">
+		<h3>Payment</h3>
+		<ul>
+			<li>
+				After the end of each round you can see the history of the round.
+			</li>
+			<li>
+				Total Points in a Round = Sum of Points in Red Game over all periods in the round + Sum of Points in Blue Game over all periods in the round
+			</li>
+			<li>
+				Total Points in Experiment = Sum of Total Points in every round.
+			</li>
+			<li>
+				At the end of the experiment, you can see the total points that you earned in the experiment and its dollar equivalent.
+			</li>
+			<li>
+				Total Payment from Session = Participation payment + Quiz payment + Dollar equivalent of total points from experiment
+			</li>
+			<li>
+				If you do not choose and confirm your actions in a period in a timely manner you will be "disconnected" and can not proceed with the rest of the session.
+			</li>
+			<li>
+				If you are "disconnected" in the experiment you will be paid the participation payment and the amount you earned in the incentivized quiz.
+			</li>
+            <li>
+                What happens when either Other Red, Other Blue or both Other Red and Other Blue drop out in a round?
+            </li>
+            <ul>
+                <li>
+                    It is possible that any or both of the participants you are paired with may not take decisions in a timely manner in a period of the round (drop out).
+                </li>
+                <li>
+                	If Other Red drops out, you will be allotted {{ expPoints_Red }} points for Red Game for each of the remaining periods of that round.
+                </li>
+                <li>
+                    If Other Blue drops out, you will be allotted {{ expPoints_Blue }} points for Blue Game respectively for each of the remaining periods of that round.
+                </li>
+            </ul>
+			
+		</ul>
+		<p style="text-align: center;"> <br/>
+			You can press the ''Quiz'' button below to proceed to the Quiz.
+			<br>
+			<button class="otree-btn-next btn btn-primary" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+			Quiz
+			</button>
+		</p>
+	</div>
+
+
+{% endblock%}

@@ -1,0 +1,91 @@
+{% extends "otree/WaitPage.html" %}
+{% load otree %}
+
+{% block title %}
+    <h2 id="connected_h2">
+        Waiting for Other
+    </h2>
+    <h2 id="disconnected_h2">
+        Disconnected
+    </h2>
+{% endblock %}
+
+{% block content %}
+
+    <div class="card-body" id="connected_div">
+        
+        <p style="text-align: center; font-size: 24px;">
+            Round Number #{{ roundNumber }}
+        </p>
+
+        <h3 style="text-align: center; font-size: 24px;">
+            Point Tables
+        </h3>
+
+        <p>
+            {% include  'mmc_rep_exp_TSS/Payofftables.html' %}
+        </p>
+
+        <hr style="clear:both;">
+
+        <h3 style="text-align: center; font-size: 24px;">
+            History Tables
+        </h3>
+
+        <p>
+            {% include 'mmc_rep_exp_TSS/HistoryTable.html' %}
+        </p>
+
+        <hr style="clear:both;">
+        
+    </div>
+
+    <div class="description" style="margin-top: 0px;" id="disconnected_div">
+        
+        <p>
+            You have taken more than the alloted time. Therefore we are going to regard you as disconnected and you can not proceed with the session.
+        </p>
+
+        <p>
+            The Participation Payment is ${{ myParticipation }}. From the quiz you received ${{ myQuiz }}. You will receive {{ myTotalPayoff }} in total.
+        </p>
+
+    </div>
+
+{% endblock %}
+
+{% block app_styles %}
+    
+    {% include 'mmc_rep_exp_TSS/CSS_details.html' %}
+
+{% endblock%}
+
+{% block app_scripts %}
+
+    {% include  'mmc_rep_exp_TSS/Scripts.html' %}
+    <script type="text/javascript">
+        getPayoffs();
+        var disconnected = ({{ disconnected|json }});
+
+        var pN = ({{ periodNumber|json }})-1;
+        
+        if (disconnected == 1) {
+            hide("connected_div");
+            hide("connected_h2");
+
+        } else {
+            hide("disconnected_div");
+            hide("disconnected_h2");
+        }
+
+        function hide(target) {
+            var x = document.getElementById(target);
+            x.style.display = "none";
+        }
+
+        showHistory(pN);
+        showCurrentPeriod(pN);
+
+    </script>
+    
+{% endblock %}

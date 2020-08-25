@@ -1,0 +1,41 @@
+{% extends "otree/Page.html" %}
+{% load staticfiles otree %}
+
+{% block app_styles %}
+	{% include 'mmc_rep_intro_off_TAM/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+	Instructions (Page 6)
+{% endblock %}
+
+{% block content %}
+	<div class="description">
+		<h3>Payment</h3>
+		<ul>
+			<li>
+				After the end of each round you can see the history of the round.
+			</li>
+			<li>
+				Total Points in a Round = Sum of Points in Red Game over all periods in the round + Sum of Points in Blue Game over all periods in the round
+			</li>
+			<li>
+				Total Points in Experiment = Sum of Total Points in every round.
+			</li>
+			<li>
+				At the end of the experiment, you can see the total points that you earned in the experiment and its dollar equivalent.
+			</li>
+			<li>
+				Total Payment from Session = Participation payment + Quiz payment + Dollar equivalent of total points from experiment
+			</li>
+		</ul>
+		<p style="text-align: center;"> <br/>
+			You can press the ''Quiz'' button below to proceed to the Quiz.
+			<br>
+			<button class="otree-btn-next btn btn-primary" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+			Quiz
+			</button>
+		</p>
+	</div>
+
+{% endblock%}

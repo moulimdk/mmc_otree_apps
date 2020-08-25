@@ -1,0 +1,104 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block app_styles %}
+    {% include 'mmc_rep_intro_off_TAM/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+    Instructions (Page 3)
+{% endblock %}
+
+{% block content %}
+    <div class="description">
+        <h3> Games, Actions and Points </h3>
+        <ul style="text-align: left;">
+            <li>
+                In each period of a round, you will participate in two <b>Games</b> simultaneously, <div class="redbox">Red Game</div> with Other Red and <div class="bluebox">Blue Game</div> with Other Blue. 
+            </li>
+            <li>
+                For each game, you can choose between two <b>Actions</b>: Action <div class="abox">A</div> and Action <div class="bbox">B</div> in <div class="redbox">Red Game</div>; Action
+                <div class="Wbox">W</div> and Action <div class="Ybox">Y</div> in <div class="bluebox">Blue Game</div>.
+            </li>
+            <li>
+                For each <b>Game</b>, your points will be decided by your action and the action of the other participant. 
+            </li>
+            <li>
+                You, and Other need to choose and confirm your actions in each period in a timely manner. If you do not confirm your actions in a timely manner, you will be given a warning. After the warning you will have another 30 seconds. If you do not choose and confirm your actions in the 30 seconds after the warning, an action will be chosen randomly for each game for that round.
+            </li>
+            <li>
+                The tables below show the points corresponding to your actions and the other participant's actions in each game and they will remain unchanged across all the matches in the experiment.
+            </li>
+        </ul>
+
+        <div style="border: none;">
+            <h3 style="text-align: center; font-family: Proxima Nova;">Point Tables</h3>
+            {% include 'mmc_rep_intro_off_TAM/Payofftables.html' %}
+
+            <hr style="clear:both;">
+        </div>
+        <p>Examples which explain how to understand the Points Table:</p>
+        <ul>
+            <li>
+                In the table above, if you choose Action <div class="Wbox">W</div> and Other chooses Action <div class="Wbox">W</div> in <div class="bluebox">Blue Game</div>, then you will receive <div id="Ex_00_21" style="display: inline-block;">?</div> points and, Other will receive <div id="Ex_00_12" style="display: inline-block;">?</div> points.
+            </li>
+            <li>
+                In the table above, if you choose Action <div class="abox">A</div> and Other chooses Action <div class="bbox">B</div> in <div class="redbox">Red Game</div>, then you will receive <div id="Ex_01_11" style="display: inline-block;">?</div> points and, Other will receive <div id="Ex_10_22" style="display: inline-block;">?</div> points.
+            </li>
+            <li>
+                In the table above, if you choose Action <div class="Ybox">Y</div> and Other chooses Action <div class="Wbox">W</div> in <div class="bluebox">Blue Game</div>, then you will receive <div id="Ex_10_21" style="display: inline-block;">?</div> points and, Other will receive <div id="Ex_01_12" style="display: inline-block;">?</div> points.
+            </li>
+            <li>
+                In the table above, if you choose Action <div class="bbox">B</div> and Other chooses Action <div class="bbox">B</div> in <div class="redbox">Red Game</div>, then you will receive <div id="Ex_11_11" style="display: inline-block;">?</div> points and, Other will receive <div id="Ex_11_22" style="display: inline-block;">?</div> points.
+            </li>
+        </ul>
+        <br>
+        <p>In the next page, we will explain how you can see the history of periods in a Round.</p>
+        <br>
+        <p style="text-align: center;">
+           <button class="otree-btn-next btn btn-primary" id="NextButton" style="display: inline-block;  font-size: 22px; background-color: #024b30;">Page 4</button>
+        </p>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    
+    <script type="text/javascript">
+
+        document.getElementById("Ex_00_21").innerHTML=({{ payoff_matrix2|json }})[0][0];
+        document.getElementById("Ex_00_12").innerHTML=({{ payoff_matrix1|json }})[0][0];
+        document.getElementById("Ex_01_11").innerHTML=({{ payoff_matrix1|json }})[0][1];
+        document.getElementById("Ex_10_22").innerHTML=({{ payoff_matrix2|json }})[1][0];
+        document.getElementById("Ex_10_21").innerHTML=({{ payoff_matrix2|json }})[1][0];
+        document.getElementById("Ex_01_12").innerHTML=({{ payoff_matrix1|json }})[0][1];
+        document.getElementById("Ex_11_11").innerHTML=({{ payoff_matrix1|json }})[1][1];
+        document.getElementById("Ex_11_22").innerHTML=({{ payoff_matrix2|json }})[1][1];
+
+        getPayoffs()
+
+        function getPayoffs() {
+
+            document.getElementById("00_11").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_11").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_11").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_11").innerHTML=({{ payoff_matrix1|json }})[1][1];
+            document.getElementById("00_21").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_21").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_21").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_21").innerHTML=({{ payoff_matrix2|json }})[1][1];
+
+            document.getElementById("00_12").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_12").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_12").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_12").innerHTML=({{ payoff_matrix1|json }})[1][1];
+            document.getElementById("00_22").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_22").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_22").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_22").innerHTML=({{ payoff_matrix2|json }})[1][1];
+
+        }
+
+    </script>
+
+{% endblock %}

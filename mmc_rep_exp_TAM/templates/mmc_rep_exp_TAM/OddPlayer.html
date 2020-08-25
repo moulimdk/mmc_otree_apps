@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Round Result
+{% endblock %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_TAM/CSS_details.html' %}
+
+{% endblock%}
+
+{% block content %}
+
+	<p style="text-align: center; font-size: 24px;">Round No. #{{ roundNumber }}</p>
+
+	<div class="description">
+		<div>
+			You could not be paired with another participant for this Round. This Round lasted for {{ totalPeriods }} period(s). 
+		</div>
+		<div>
+			You are given {{ expPointsR }} points for each period in <div class="redbox">Red Game</div>.
+		</div>
+		<div>
+			You are given {{ expPointsB }} points for each period in <div class="bluebox">Blue Game</div>.
+		</div>
+
+		<h3 style="text-align: center; font-size: 24px;">History Tables</h3>
+
+		{% include 'mmc_rep_exp_TAM/HistoryTable.html' %}
+
+		<hr style="clear:both;">
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+	{% include  'mmc_rep_exp_TAM/Scripts.html' %}
+	
+	<script type="text/javascript">
+
+		pN = ({{ totalPeriods }});
+		expPointsR = ({{ expPointsR }});
+		expPointsB = ({{ expPointsB }});
+
+		showOddPeriods(pN,expPointsR,expPointsB);
+
+	</script>
+
+{% endblock %}

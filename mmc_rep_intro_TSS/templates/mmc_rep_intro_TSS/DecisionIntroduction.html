@@ -1,0 +1,95 @@
+{% extends "otree/Page.html" %}
+{% load staticfiles otree %}
+
+{% block app_styles %}
+	{% include 'mmc_rep_intro_TSS/CSS_details.html' %}
+{% endblock %}
+
+{% block title %}
+	Instructions (Page 5)
+{% endblock %}
+
+{% block content %}
+	<div class="description">
+		<h3>Taking Actions </h3>
+		<ul>
+			<li>
+				You can see the Point tables and the History tables when you take actions in each period of each round.
+			</li>
+			<li>
+				On the page where you take actions, there will be buttons for the actions for each game as you can see in the figure below.
+			</li>
+			<li>
+				When you choose an action, it will appear in a statement below the buttons.
+			</li>
+			<li>
+				When you have chosen an action in each game, a button "Confirm Actions" will appear. You can change your actions as many times as you want before pressing "Confirm Actions" button.
+			</li>
+			<li>
+				Pressing the "Confirm Actions" button will confirm your actions for that period.
+			</li>
+		</ul>
+		<div style="border: solid thin black;">
+			<h3 style="text-align: center;">Action Buttons</h3>
+			{% include 'mmc_rep_intro_TSS/Decisions.html' %}
+			<hr style="clear:both;">
+			<p style="text-align: center;"><br/>
+				<button class="otree-btn-next btn btn-primary" id="Confirm" type="button" style="display: inline-block; font-size: 20px;">
+					Confirm Actions
+				</button>
+			</p>
+			<p></p>
+		</div>
+		<div>
+			If either Other Red or Other Blue leaves the round, you have to choose action in only <div class="bluebox">Blue Game</div> or <div class=redbox>Red Game</div> respectively.
+		</div>
+		<br>
+		<p>
+			In the next page we will explain the point system for the experiment in more detail.
+		</p>
+		<p style="text-align: center;">
+    	   <button class="otree-btn-next btn btn-primary" id="NextButton" style="display: inline-block;  font-size: 22px; background-color: #024b30;">Page 6</button>
+        </p>
+
+	</div>
+
+
+{% endblock%}
+
+{% block scripts %}
+	<script type="text/javascript">
+
+		var choice1=1;
+		var choice2=0;
+		document.getElementById("FChoice_1").innerHTML="B";
+		document.getElementById("FChoice_1").setAttribute("class", "bbox");
+		document.getElementById("FChoice_2").innerHTML="W";
+		document.getElementById("FChoice_2").setAttribute("class", "Wbox");
+
+
+		function addClick1A() {
+			choice1 = document.getElementById("myChoice1A").value;
+			document.getElementById("FChoice_1").innerHTML="A";
+			document.getElementById("FChoice_1").setAttribute("class", "abox");
+		}
+
+		function addClick1B() {
+			choice1 = document.getElementById("myChoice1B").value;
+			document.getElementById("FChoice_1").innerHTML="B";
+			document.getElementById("FChoice_1").setAttribute("class", "bbox");
+		}
+
+		function addClick2A() {
+			choice2 = document.getElementById("myChoice2A").value;
+			document.getElementById("FChoice_2").innerHTML="W";
+			document.getElementById("FChoice_2").setAttribute("class", "Wbox");
+		}
+
+		function addClick2B() {
+			choice2 = document.getElementById("myChoice2B").value;
+			document.getElementById("FChoice_2").innerHTML="Y";
+			document.getElementById("FChoice_2").setAttribute("class", "Ybox");
+		}
+
+	</script>
+{% endblock %}

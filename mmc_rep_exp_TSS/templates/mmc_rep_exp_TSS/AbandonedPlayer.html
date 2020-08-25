@@ -1,0 +1,54 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    <h2 style="text-align: center;">Round Result</h2> 
+{% endblock %}
+
+{% block app_styles %}
+	
+	{% include 'mmc_rep_exp_TSS/CSS_details.html' %}
+
+{% endblock%}
+
+{% block content %}
+
+	<p style="text-align: center; font-size: 24px;">Round No. #{{ roundNumber }}</p>
+
+	<div class="description">
+		<ul>
+			<li>
+				Other has left the Match. 
+			</li>
+			<li>
+				This Match lasted for another {{ numberPeriodsLeft }} period(s).
+			</li>
+			<li>
+				You are given {{ expPointsR }} points for <div class="redbox">Red Game</div> and {{ expPointsB }} points for <div class="bluebox">Blue Game</div> for every period left in the round.
+			</li>
+		</ul>
+		<h3 style="text-align: center;">History Tables</h3>
+
+		{% include 'mmc_rep_exp_TAM/HistoryTable.html' %}
+
+		<hr style="clear:both;">
+	</div>
+
+{% endblock %}
+
+{% block app_scripts %}
+
+	{% include  'mmc_rep_exp_TSS/Scripts.html' %}
+	<script type="text/javascript">
+
+		var pN = ({{ periodNumber|json }});
+		var rN = ({{ abandoned_period|json }});
+		
+		showHistory(pN);
+		expPointsR = ({{ expPointsR }});
+		expPointsB = ({{ expPointsB }});
+		showAbandonedPeriods(pN,rN,expPointsR,expPointsB);
+
+	</script>
+	
+{% endblock %}
