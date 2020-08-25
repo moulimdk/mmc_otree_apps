@@ -10,31 +10,31 @@ class Constants(BaseConstants):
     name_in_url = 'mmc_rep_exp_off_TAM'
     players_per_group = None
 
-    ## Payoff Tables
-    payoff_matrix1=settings.SESSION_CONFIGS[7].get('payoff_1') # Payoff matrix of setting 1
-    payoff_matrix2=settings.SESSION_CONFIGS[7].get('payoff_2') # Payoff matrix of setting 2
+    # Payoff Tables
+    payoff_matrix1 = settings.SESSION_CONFIGS[3].get('payoff_1')  # Payoff matrix of setting 1
+    payoff_matrix2 = settings.SESSION_CONFIGS[3].get('payoff_2')  # Payoff matrix of setting 2
     expPoints = {}
-    expPoints["R"] = settings.SESSION_CONFIGS[7].get('expPoints_Red') # Expected Points matrix 1
-    expPoints["B"] = settings.SESSION_CONFIGS[7].get('expPoints_Blue') # Expected Points matrix 2
+    expPoints["R"] = settings.SESSION_CONFIGS[3].get('expPoints_Red')  # Expected Points matrix 1
+    expPoints["B"] = settings.SESSION_CONFIGS[3].get('expPoints_Blue')  # Expected Points matrix 2
     
-    SG_lengths = settings.SESSION_CONFIGS[7].get('SG_lengths') # Number of periods in supergames
-    SG_totalNum = len(SG_lengths) # Number of supergames
-    SG_endPeriods = np.cumsum(SG_lengths) # End period for each supergame
-    num_rounds = SG_endPeriods[-1] + 1 # Total number of rounds
+    SG_lengths = settings.SESSION_CONFIGS[3].get('SG_lengths')  # Number of periods in supergames
+    SG_totalNum = len(SG_lengths)  # Number of supergames
+    SG_endPeriods = np.cumsum(SG_lengths)  # End period for each supergame
+    num_rounds = SG_endPeriods[-1] + 1  # Total number of rounds
     
-    dieN = settings.SESSION_CONFIGS[7].get('die_N') #Number on a die
-    contProb = settings.SESSION_CONFIGS[7].get('contProb') #Continuation probability in percentages
+    dieN = settings.SESSION_CONFIGS[3].get('die_N')  # Number on a die
+    contProb = settings.SESSION_CONFIGS[3].get('contProb')  # Continuation probability in percentages
     endProb = 100 - contProb 
-    thres = int(1+(dieN*contProb/100)); #Threshold number on a die
+    thres = int(1+(dieN*contProb/100))  # Threshold number on a die
 
-    participation_fee = settings.SESSION_CONFIGS[7].get('participation_fee') # Participation payment
-    quiz_fee = settings.SESSION_CONFIGS[7].get('quiz_fee') # Quiz payment
+    participation_fee = settings.SESSION_CONFIGS[3].get('participation_fee')  # Participation payment
+    quiz_fee = settings.SESSION_CONFIGS[3].get('quiz_fee')  # Quiz payment
 
-    exRate = int(1/settings.SESSION_CONFIGS[7].get('real_world_currency_per_point')) # Exchange Rate (points to dollar)
+    exRate = int(1/settings.SESSION_CONFIGS[3].get('real_world_currency_per_point'))  # Exchange Rate (points to dollar)
     
-    time_period = settings.SESSION_CONFIGS[7].get('time_period') # Total time alloted to a period
-    time_begin = settings.SESSION_CONFIGS[7].get('time_welcome') # Time alloted in the first page
-    time_next = settings.SESSION_CONFIGS[7].get('time_next') # Time to next round
+    time_period = settings.SESSION_CONFIGS[3].get('time_period')  # Total time allotted to a period
+    time_begin = settings.SESSION_CONFIGS[3].get('time_welcome')  # Time allotted in the first page
+    time_next = settings.SESSION_CONFIGS[3].get('time_next')  # Time to next round
 
 
 class Subsession(BaseSubsession):

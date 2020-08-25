@@ -4,11 +4,9 @@ from .models import Constants
 import time
 from copy import deepcopy
 
+
 class BeginInstructions(Page):
     """Page at the beginning of Instructions"""
-
-    def before_next_page(self):
-        self.participant.vars['expiry'] = time.time()+Constants.time_intro*60
 
     def vars_for_template(self):
         return dict(
@@ -17,15 +15,18 @@ class BeginInstructions(Page):
             maxExpTime=Constants.maxExpTime,
             )
 
+
 class Welcome(Page):
     """First page"""
-    
+
     timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
-      return self.participant.vars['expiry'] - time.time()
+
+        return self.participant.vars['expiry'] - time.time()
 
     def vars_for_template(self):
+
         return dict(
             participation_fee=int(Constants.participation_fee),
             quiz_fee=Constants.quiz_fee,

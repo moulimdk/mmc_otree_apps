@@ -77,34 +77,34 @@ class Constants(BaseConstants):
     num_rounds = 1#Number of rounds for this app
     
     #Properties of session imported from session configurations
-    num_matches = settings.SESSION_CONFIGS[3].get('SG_totalNum') #Total Number of Supergames
+    num_matches = settings.SESSION_CONFIGS[1].get('SG_totalNum') #Total Number of Supergames
     
-    dieN = settings.SESSION_CONFIGS[3].get('die_N') #Number on a die
-    contProb = settings.SESSION_CONFIGS[3].get('contProb') #Continuation probability in percentages
+    dieN = settings.SESSION_CONFIGS[1].get('die_N') #Number on a die
+    contProb = settings.SESSION_CONFIGS[1].get('contProb') #Continuation probability in percentages
     endProb = 100 - contProb 
-    thres = int(1+(dieN*contProb/100)); #Threshold number on a die
+    thres = int(1+(dieN*contProb/100)) #Threshold number on a die
     
-    payoff_matrix1=settings.SESSION_CONFIGS[3].get('payoff_1') #Payoff matrix of setting 1
-    payoff_matrix2=settings.SESSION_CONFIGS[3].get('payoff_2') #Payoff matrix of setting 2
+    payoff_matrix1=settings.SESSION_CONFIGS[1].get('payoff_1') #Payoff matrix of setting 1
+    payoff_matrix2=settings.SESSION_CONFIGS[1].get('payoff_2') #Payoff matrix of setting 2
     
-    participation_fee = settings.SESSION_CONFIGS[3].get('participation_fee') #Participation payment
-    quiz_fee = settings.SESSION_CONFIGS[3].get('quiz_fee') #Quiz payment
-    avg_earn = settings.SESSION_CONFIGS[3].get('avg_earn') #Average Earning
-    low_earn = settings.SESSION_CONFIGS[3].get('low_earn') #Low Earning
-    high_earn = settings.SESSION_CONFIGS[3].get('high_earn') #High Earning
-    expPoints_Red = settings.SESSION_CONFIGS[3].get('expPoints_Red') #Expected Points for Red Game
-    expPoints_Blue = settings.SESSION_CONFIGS[3].get('expPoints_Blue') #Expected Points for Blue Game
+    participation_fee = settings.SESSION_CONFIGS[1].get('participation_fee') #Participation payment
+    quiz_fee = settings.SESSION_CONFIGS[1].get('quiz_fee') #Quiz payment
+    avg_earn = settings.SESSION_CONFIGS[1].get('avg_earn') #Average Earning
+    low_earn = settings.SESSION_CONFIGS[1].get('low_earn') #Low Earning
+    high_earn = settings.SESSION_CONFIGS[1].get('high_earn') #High Earning
+    expPoints_Red = settings.SESSION_CONFIGS[1].get('expPoints_Red') #Expected Points for Red Game
+    expPoints_Blue = settings.SESSION_CONFIGS[1].get('expPoints_Blue') #Expected Points for Blue Game
 
-    exRate = int(1/settings.SESSION_CONFIGS[3].get('real_world_currency_per_point')) #Exchange Rate (points to dollar)
+    exRate = int(1/settings.SESSION_CONFIGS[1].get('real_world_currency_per_point')) #Exchange Rate (points to dollar)
     
-    minExpTime = settings.SESSION_CONFIGS[3].get('minExpTime') #Min Expected time of the session
-    maxExpTime = settings.SESSION_CONFIGS[3].get('maxExpTime') #Max Expected time of the session
-    time_welcome = settings.SESSION_CONFIGS[3].get('time_welcome') #Time alloted to first page
-    time_quiz = settings.SESSION_CONFIGS[3].get('time_quiz') #Total time alloted to the quiz
-    time_round = settings.SESSION_CONFIGS[3].get('time_round') #Total time alloted to a round
-    time_intro = settings.SESSION_CONFIGS[3].get('time_intro') #Time alloted to instructions
+    minExpTime = settings.SESSION_CONFIGS[1].get('minExpTime') #Min Expected time of the session
+    maxExpTime = settings.SESSION_CONFIGS[1].get('maxExpTime') #Max Expected time of the session
+    time_welcome = settings.SESSION_CONFIGS[1].get('time_welcome') #Time alloted to first page
+    time_quiz = settings.SESSION_CONFIGS[1].get('time_quiz') #Total time alloted to the quiz
+    time_round = settings.SESSION_CONFIGS[1].get('time_round') #Total time alloted to a round
+    time_intro = settings.SESSION_CONFIGS[1].get('time_intro') #Time alloted to instructions
     
-    num_ques = settings.SESSION_CONFIGS[3].get('num_ques') #Number of questions in the quiz
+    num_ques = settings.SESSION_CONFIGS[1].get('num_ques') #Number of questions in the quiz
     
     choices_prob = (
             (1,"100%"),

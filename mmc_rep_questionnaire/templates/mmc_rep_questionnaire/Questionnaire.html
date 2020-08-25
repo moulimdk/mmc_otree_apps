@@ -1,0 +1,73 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+	<style type="text/css">
+		h2 {
+	        padding-top: 0px;
+	        text-align: center;
+	    }
+
+	    p{
+        margin-bottom: 0px;
+    }
+
+	    h4 {
+	        text-align: center;
+	        font-size: 28px;
+	    }
+
+		.description{
+	        width: auto;
+	        padding-left:10%;
+	        padding-right:10%;
+	        text-align: justify;
+	        font-size: 20px;
+	        margin-top: 50px;
+    	}
+	    
+	    .otree-body {
+        max-width: 1678px;
+        max-height: 1048px;
+        /*bottom: solid black;*/
+        position: absolute;
+        font-family: Proxima Nova;
+        overflow: scroll;
+    }
+	</style>
+{% endblock %}
+
+{% block title %}
+    Anonymous Survey
+{% endblock %}
+
+{% block content %}
+	<div class="description">
+		<p>
+			Please complete the following questionnaire. You may choose "Prefer Not to Answer" for all questions.
+		</p>
+		
+		{% formfield player.Gender label = "Gender"%}
+
+		{% formfield player.age label = "Age (Round off to nearest Year) (Type in 0 if you prefer not answer)"%}
+
+		<p>
+			Coursework (number of courses completed at university)
+		</p>
+
+		{% formfield player.Econ_courses label = "Economics"%}
+
+		{% formfield player.Stat_courses label = "Statistics"%}
+
+		{% formfield player.STEM_courses label = "STEM"%}
+
+		{% formfield player.Busi_courses label = "Business"%}
+
+		<p style="text-align: center;"><br/>
+		<button class="otree-btn-next btn btn-primary" id="Confirm" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+			Submit Survey
+		</button>
+	</p>
+
+	</div>
+{% endblock %}

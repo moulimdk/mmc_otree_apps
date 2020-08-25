@@ -6,35 +6,36 @@ doc = """
 Experiment for Treatment Symmetric Singlemarket Contact in the Laboratory
 """
 
+
 class Constants(BaseConstants):
     name_in_url = 'mmc_rep_exp_off_TSS'
     players_per_group = None
 
-    ## Payoff Tables
-    payoff_matrix1=settings.SESSION_CONFIGS[1].get('payoff_1') # Payoff matrix of setting 1
-    payoff_matrix2=settings.SESSION_CONFIGS[1].get('payoff_2') # Payoff matrix of setting 2
+    # Payoff Tables
+    payoff_matrix1=settings.SESSION_CONFIGS[0].get('payoff_1')  # Payoff matrix of setting 1
+    payoff_matrix2=settings.SESSION_CONFIGS[0].get('payoff_2')  # Payoff matrix of setting 2
     expPoints = {}
-    expPoints["R"] = settings.SESSION_CONFIGS[1].get('expPoints_Red') # Expected Points matrix 1
-    expPoints["B"] = settings.SESSION_CONFIGS[1].get('expPoints_Blue') # Expected Points matrix 2
+    expPoints["R"] = settings.SESSION_CONFIGS[0].get('expPoints_Red')  # Expected Points matrix 1
+    expPoints["B"] = settings.SESSION_CONFIGS[0].get('expPoints_Blue')  # Expected Points matrix 2
     
-    SG_lengths = settings.SESSION_CONFIGS[1].get('SG_lengths') # Number of periods in supergames
-    SG_totalNum = len(SG_lengths) # Number of supergames
-    SG_endPeriods = np.cumsum(SG_lengths) # End period for each supergame
-    num_rounds = SG_endPeriods[-1] + 1 # Total number of rounds
+    SG_lengths = settings.SESSION_CONFIGS[0].get('SG_lengths')  # Number of periods in supergames
+    SG_totalNum = len(SG_lengths)  # Number of supergames
+    SG_endPeriods = np.cumsum(SG_lengths)  # End period for each supergame
+    num_rounds = SG_endPeriods[-1] + 1  # Total number of rounds
     
-    dieN = settings.SESSION_CONFIGS[1].get('die_N') #Number on a die
-    contProb = settings.SESSION_CONFIGS[1].get('contProb') #Continuation probability in percentages
+    dieN = settings.SESSION_CONFIGS[0].get('die_N')  # Number on a die
+    contProb = settings.SESSION_CONFIGS[0].get('contProb')  # Continuation probability in percentages
     endProb = 100 - contProb 
-    thres = int(1+(dieN*contProb/100)); #Threshold number on a die
+    thres = int(1+(dieN*contProb/100))  # Threshold number on a die
 
-    participation_fee = settings.SESSION_CONFIGS[1].get('participation_fee') # Participation payment
-    quiz_fee = settings.SESSION_CONFIGS[1].get('quiz_fee') # Quiz payment
+    participation_fee = settings.SESSION_CONFIGS[0].get('participation_fee')  # Participation payment
+    quiz_fee = settings.SESSION_CONFIGS[0].get('quiz_fee')  # Quiz payment
 
-    exRate = int(1/settings.SESSION_CONFIGS[1].get('real_world_currency_per_point')) # Exchange Rate (points to dollar)
+    exRate = int(1/settings.SESSION_CONFIGS[0].get('real_world_currency_per_point'))  # Exchange Rate (points to dollar)
     
-    time_period = settings.SESSION_CONFIGS[1].get('time_period') # Total time alloted to a period
-    time_begin = settings.SESSION_CONFIGS[1].get('time_welcome') # Time alloted in the first page
-    time_next = settings.SESSION_CONFIGS[1].get('time_next') # Time to next round
+    time_period = settings.SESSION_CONFIGS[0].get('time_period')  # Total time allotted to a period
+    time_begin = settings.SESSION_CONFIGS[0].get('time_welcome')  # Time allotted in the first page
+    time_next = settings.SESSION_CONFIGS[0].get('time_next')  # Time to next round
 
 
 class Subsession(BaseSubsession):
@@ -74,7 +75,7 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     
-     ## Group methods
+    # Group methods
 
     # Initializing a supergame
     def init_match(self):
@@ -97,7 +98,7 @@ class Group(BaseGroup):
     # Get period game
     def period_update(self):
 
-        players = self.get_players() #List ordered by id_in_group
+        players = self.get_players()  # List ordered by id_in_group
         roll = self.get_group_roll(self.round_number)
         nplayers = len(players)
         roundPos = np.where(self.round_number <= Constants.SG_endPeriods)[0][0]

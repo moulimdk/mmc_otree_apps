@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+	<style type="text/css">
+		.description{
+	        width: auto;
+	        padding-left:10%;
+	        padding-right:10%;
+	        text-align: justify;
+	        font-size: 20px;
+	        margin-top: 50px;
+    	}
+
+	    .otree-body {
+	        max-width: 100%;
+	        font-family: Proxima Nova;
+	    }
+
+	    .otree-timer{
+	        display: none;
+	    }
+
+	    h2 {
+	    	text-align: center;
+	    }
+	</style>
+{% endblock %}
+
+{% block title %}
+    End
+{% endblock %}
+
+{% block content %}
+	<div class="description">
+		<p style="text-align: center;">
+			The session has come to an end. Thank you for your participation.
+		</p>
+	</div>
+{% endblock %}

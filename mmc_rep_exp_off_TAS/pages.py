@@ -11,6 +11,8 @@ class BeginExperiment(Page):
             payoff_matrix1 = Constants.payoff_matrix1,
             payoff_matrix2 = Constants.payoff_matrix2,
             exRate=Constants.exRate,
+            contProb=Constants.contProb,
+            endProb=Constants.endProb,
             )
 
     def is_displayed(self):
