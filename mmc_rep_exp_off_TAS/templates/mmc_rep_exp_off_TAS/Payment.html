@@ -15,8 +15,9 @@
 
 	<div class="description">
 		<p>
-			Please write down the following details in the "Payment Sheet" given to you.
+			Please write down the following details in the "Payment Sheet" given to you. Please turn in this sheet to the experimenter for payment.
 		</p>
+		<br>
 		<ul>
 			<li>
 				Participation Payment : ${{ myParticipation }}
@@ -35,13 +36,14 @@
 			</li>
 			<br>
 			<li>
-				Dollar Equivalent of Points from experiment : ${{ myPayoff }}
+				Dollar Equivalent of Points from experiment : {{ myPayoff }}
 			</li>
 			<br>
 			<li>
 				Total Payment : {{ myTotalPayoff }}
 			</li>
 		</ul>
+		<p style="text-align: center;">Please click on the "Anonymous Survey" button to take the Anonymous Survey.</p>
 		<p style="text-align: center;">
 	       	<button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
 	            Anonymous Survey

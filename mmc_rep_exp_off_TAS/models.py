@@ -181,6 +181,7 @@ class Player(BasePlayer):
     myCumulativePayoff = models.CurrencyField()
     totalPeriod = models.IntegerField()
     timeout = models.IntegerField()
+    totalPayment = models.CurrencyField()
 
     # Initialization of participant variables
     def connect(self,rN):
