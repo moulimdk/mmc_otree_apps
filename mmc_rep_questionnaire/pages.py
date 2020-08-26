@@ -6,7 +6,7 @@ from .models import Constants
 class Questionnaire(Page):
 
     form_model = 'player'
-    form_fields = ['Gender','age','Education_choices','Econ_courses','Stat_courses','STEM_courses','Busi_courses','Experiments','Employment']
+    form_fields = ['Gender','age','Econ_courses','Stat_courses','STEM_courses','Busi_courses']
 
     def is_displayed(self):
         

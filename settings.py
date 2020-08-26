@@ -298,7 +298,13 @@ LANGUAGE_CODE = 'en'
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
-ROOMS = []
+ROOMS = [
+    dict(
+        name='mmc_rep_exp',
+        display_name='MMC Experiment',
+        participant_label_file='_rooms/econ101.txt',
+    )
+]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
