@@ -136,9 +136,6 @@ class Payment(Page):
 
 class Quiz(Page):
 
-    timer_text = 'Time remaining on Quiz:'
-    timeout_seconds = Constants.time_quiz*60
-
     form_model = 'player'
     form_fields = ['ans_choice_1', 'ans_choice_2', 'ans_choice_3', 'ans_choice_4', 'ans_choice_5', 'ans_choice_6', 'ans_choice_7', 'ans_choice_8']
     
@@ -159,8 +156,6 @@ class Quiz(Page):
 
     def before_next_page(self):
         
-        if self.timeout_happened:
-            self.player.timedout = 1
         self.player.answer_check()
 
 
@@ -169,7 +164,6 @@ class Result(Page):
     def vars_for_template(self):
         
         return dict(
-            timedout=self.player.timedout,
             correct_ans=self.player.myCorrectAns,
             quiz_ques=Constants.num_ques,
             quiz_pay=self.player.myQuizPay,
