@@ -6,6 +6,7 @@ doc = """
 Experiment for Treatment Asymmetric Singlemarket Contact in the Laboratory
 """
 
+
 class Constants(BaseConstants):
     name_in_url = 'mmc_rep_exp_off_TAS'
     players_per_group = None
@@ -116,6 +117,7 @@ class Group(BaseGroup):
 
             myB = me.myChoiceB
             otherR = other.myChoiceR
+
             me.myPayoffB = Constants.payoff_matrix2[myB][otherR]
             other.myPayoffR = Constants.payoff_matrix1[otherR][myB]
 

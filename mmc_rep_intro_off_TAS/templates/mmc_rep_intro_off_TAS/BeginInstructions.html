@@ -10,33 +10,33 @@
 {% endblock %}
 
 {% block content %}
-<div class="description">
-    <ul>
-        <li>
-            Today's session is expected to last {{ minExpTime }} to {{ maxExpTime }} minutes.
-        </li>
+    <div class="description">
+        <ul>
+            <li>
+                Today's session is expected to last {{ minExpTime }} to {{ maxExpTime }} minutes.
+            </li>
+            <br>
+            <li>
+                You will start with the instructions and a quiz.
+            </li>
+            <br>
+            <li>
+                There are <b>six (6)</b> pages in the instructions. You have <b>{{ time_intro }} minutes</b> to read the instructions.
+            </li>
+            <br>
+            <li>
+                You will <b>NOT</b> be able to go back to earlier pages from any page.
+            </li>
+            <br>
+            <li>
+                You can raise your hand to notify an experimenter if you need any help.
+            </li>
+        </ul>
         <br>
-        <li>
-            You will start with the instructions and a quiz.
-        </li>
-        <br>
-        <li>
-            There are <b>six (6)</b> pages in the instructions. You have <b>{{ time_intro }} minutes</b> to read the instructions.
-        </li>
-        <br>
-        <li>
-            You will <b>NOT</b> be able to go back to earlier pages from any page.
-        </li>
-        <br>
-        <li>
-            You can raise your hand to notify an experimenter if you need any help.
-        </li>
-    </ul>
-    <br>
-    <p style="text-align: center;">
-       <button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
-            Start Instructions
-       </button>
-    </p>
-</div>
+        <p style="text-align: center;">
+           <button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+                Start Instructions
+           </button>
+        </p>
+    </div>
 {% endblock %}

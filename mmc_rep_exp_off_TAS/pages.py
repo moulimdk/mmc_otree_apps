@@ -16,6 +16,7 @@ class BeginExperiment(Page):
             )
 
     def is_displayed(self):
+
         return self.round_number == 1
 
 
@@ -239,11 +240,12 @@ class Payment(Page):
 
         return (self.round_number == Constants.SG_endPeriods[-1]+1)
 
-page_sequence = [BeginExperiment,
-                 ShuffleWaitPage,
-                 GameDecision,
-                 DecisionWaitPage,
-                 RoundResult,
-                 OddPlayer,
-                 Payment
+page_sequence = [
+                BeginExperiment,
+                ShuffleWaitPage,
+                GameDecision,
+                DecisionWaitPage,
+                RoundResult,
+                OddPlayer,
+                Payment
                 ]

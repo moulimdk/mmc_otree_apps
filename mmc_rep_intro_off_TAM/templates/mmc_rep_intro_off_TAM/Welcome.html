@@ -3,32 +3,36 @@
 
 {% block app_styles %}
     {% include 'mmc_rep_intro_off_TAM/CSS_details.html' %}
-    <style type="text/css">
-        .otree-timer{
-        position: fixed;
-        font-family: Proxima Nova;
-    }
-    </style>
 {% endblock %}
 
 {% block title %}
-     Welcome 
+     Session Overview (Page 1 of 6)
 {% endblock %}
 
 {% block content %}
     <div  class="description">
-        <h3> Session Overview </h3>
-        <p> 
-            You are about to participate in an experiment in the economics of decision-making. If you read the instructions carefully, you can earn a large amount of money that will be paid to you in Cash after you complete the session. 
-        </p>
-        <p>
-            In this session you will receive at least the participation payment of ${{ participation_fee }}. The average earning will be ${{ avg_earn }} and actual earning may vary between ${{ low_earn }}-${{ high_earn }}.
-        </p>
-        <br>
-        <p>
-            The session will follow the timeline shown below.
-        </p>
-        <p>
+        <ul>
+            <li>
+                You are about to participate in an experiment in the economics of decision-making.
+            </li>
+            <br>
+            <li>
+                If you read the instructions carefully, you can earn a large amount of money that will be paid to you in Cash after you complete the session.
+            </li>
+            <br>
+            <li>
+                During the experiment, do not talk, laugh or exclaim out loud and be sure to keep your eyes on your screen only.
+            </li>
+            <br>
+            <li>
+                In this session you will receive at least the participation payment of ${{ participation_fee }}. The average earning will be ${{ avg_earn }} and actual earning may vary between ${{ low_earn }}-${{ high_earn }}.
+            </li>
+            <br>
+            <li>
+                The session will follow the timeline shown below. Every participant will go through the same timeline.
+            </li>
+        </ul>
+
         <div class="timeline" style="border: 1px solid black">
             <div class="timeline-line">
                 <div class="timepoints" style="left: 0.1%; text-align: center;">
@@ -61,29 +65,28 @@
             </div>
         </div>
         <br>
-        <ul> <h3>Details about Quiz</h3>
+        <h3>Details about Quiz</h3>
+        <ul>
             <li>
-                At the end of the instructions, you will take a quiz. There will be <b>{{ num_ques }}</b> questions in the quiz. You can earn ${{ quiz_fee }} for each question you answer <b>correctly</b>.
+                There will be <b>{{ num_ques }}</b> questions in the quiz. You can earn ${{ quiz_fee }} for each question you answer <b>correctly</b>.
             </li>
+            <br>
             <li>
-                After you submit your answers for the quiz you will proceed to the quiz payment page which will show the number of questions you answer correctly and the money you earn in the quiz.
+                After submitting the quiz, you can review every question with its correct answer and the answer you have chosen. You can also see the amount of money you get from the quiz.
             </li>
+            <br>
             <li>
-                You will have <b>{{ time_quiz }} minutes</b> to take the quiz. At the end of {{ time_quiz }} minutes, your answers will be submitted and you will proceed to the quiz payment page.
-            </li>
-            <li>
-                The experiment will begin after the quiz.
+                You can then proceed to the experiment.
             </li>
         </ul>
         <br>
         <p style="text-align: center;">
            <button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
-                Page 2
+                Go to Page 2
            </button>
         </p>
 
     </div>
-
 {% endblock %}
 
 {% block scripts %}

@@ -13,7 +13,7 @@
     <div class="description">
         <ul style="text-align: left;">
             <li>
-                For each game, you can choose between two <b>Actions</b>: Action <div class="abox">A</div> and Action <div class="bbox">B</div> in <div class="redbox">Red Game</div>; Action <div class="Wbox">W</div> and Action <div class="Ybox">Y</div> in <div class="bluebox">Blue Game</div>.
+                For each <b>Game</b>, you can choose between two <b>Actions</b>: Action <div class="abox">A</div> and Action <div class="bbox">B</div> in <div class="redbox">Red Game</div>; Action <div class="Wbox">W</div> and Action <div class="Ybox">Y</div> in <div class="bluebox">Blue Game</div>.
             </li>
             <br>
             <li>
@@ -29,14 +29,13 @@
             </li>
             <br>
             <li>
-                The tables below show the points corresponding to your actions and the other participants' actions in each game and they will remain unchanged across all the matches in the experiment.
+                The tables below show the points corresponding to your actions and the other participants' actions in each game and they will remain unchanged across all the matches in the experiment. You can see the Points tables on the pages where you have to choose your actions.
             </li>
         </ul>
 
         <div style="border: none;">
             <h3 style="text-align: center;">Points Tables</h3>
             {% include 'mmc_rep_intro_off_TSS/Payofftables.html' %}
-
             <hr style="clear:both;">
         </div>
         <p>Cosider the Points Tables above:</p>
@@ -57,7 +56,8 @@
         <br>
         <p style="text-align: center;">
 	        <button class="otree-btn-next btn btn-primary" id="NextButton" style="display: inline-block;  font-size: 22px; background-color: #024b30;">
-                Go to Page 4</button>
+                Go to Page 4
+            </button>
         </p>
     </div>
 
@@ -76,7 +76,7 @@
         document.getElementById("Ex_11_11").innerHTML=({{ payoff_matrix1|json }})[1][1];
         document.getElementById("Ex_11_21").innerHTML=({{ payoff_matrix1|json }})[1][1];
 
-        getPayoffs()
+        getPayoffs();
 
         function getPayoffs() {
 

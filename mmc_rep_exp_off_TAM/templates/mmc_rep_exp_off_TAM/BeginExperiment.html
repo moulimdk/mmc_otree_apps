@@ -2,25 +2,42 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Begin Experiment
+    Reminder
 {% endblock %}
 
 {% block app_styles %}
 	
 	{% include 'mmc_rep_exp_off_TAM/CSS_details.html' %}
-	<style type="text/css">
-        .otree-timer{
-            display: none
-        }
-    </style>
     
 {% endblock%}
 
 {% block content %}
 
 	<div class="description">
+		<ul>
+			<li>
+                At the start of each round, you will be paired with one other randomly chosen participant who we will refer to as Other.
+            </li>
+            <br>
+            <li>
+                In each period of a round you will participate in two games simultaneously (<div class="redbox">Red Game</div>, and <div class="bluebox">Blue Game</div>) with Other.
+            </li>
+            <br>
+            <li>
+            	Each round will last for a random number of periods.
+            </li>
+            <br>
+            <li>
+            	At the end of each period, the round will continue to another period with probability {{ contProb }}% and end with probability {{ endProb }}%.
+            </li>
+            <br>
+            <li>
+                In the experiment, you will work with points.  Today’s exchange rate is {{ exRate }} Points = $1.
+            </li>
+		</ul>
+		<br>
 		<h3 style="text-align: center;">
-			Point Tables
+			Points Tables
 		</h3>	
 
 		{% include  'mmc_rep_exp_off_TAM/Payofftables.html' %}
@@ -29,7 +46,7 @@
 		
 		<p style="text-align: center;">
 	       	<button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
-	            Experiment
+	            Start Experiment
 	       	</button>
 	    </p>
 	</div>
@@ -44,5 +61,4 @@
 		getPayoffs();
 	</script>
 
-	
 {% endblock %}

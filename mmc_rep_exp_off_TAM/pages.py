@@ -5,17 +5,18 @@ import numpy as np
 
 class BeginExperiment(Page):
     
-    timeout_seconds = 60
-    timer_text = "Experiment will start in:"
-
     def vars_for_template(self):
         
         return dict(
             payoff_matrix1 = Constants.payoff_matrix1,
             payoff_matrix2 = Constants.payoff_matrix2,
+            exRate=Constants.exRate,
+            contProb=Constants.contProb,
+            endProb=Constants.endProb,
             )
 
     def is_displayed(self):
+        
         return self.round_number == 1
 
 
@@ -161,9 +162,6 @@ class RoundResult(Page):
     
     """docstring for RoundResult Page: Result of every supergame for connected players"""
 
-    timeout_seconds = 60
-    timer_text = "Minutes to next Round:"
-
     def vars_for_template(self):
 
         lastRound = 0
@@ -197,9 +195,6 @@ class OddPlayer(Page):
     
     """docstring for OddPlayer: Notification for player without Other"""
 
-    timeout_seconds = 120
-    timer_text = "Minutes to next Round:"
-
     def vars_for_template(self):
         
         lastRound = 0
@@ -224,18 +219,13 @@ class Payment(Page):
 
     """docstring for Payment: Payment Page for connected players"""
     
-    timeout_seconds = 60
-    timer_text = "Minutes to Questionnaire:"
-
     def vars_for_template(self):
 
         mPo = self.player.participant.vars["totalPayoff"]
-        print("////////////////")
-        print(" ")
-        print(self.player.participant.label, ": Cumulative Payoffs: ", mPo)
-        # print("Cumulative Payoffs:", mPo)
-        mPa = c(mPo).to_real_world_currency(self.session)
+        mPa = mPo/Constants.exRate
         mQu = Constants.quiz_fee*self.participant.vars["myCorrectAns"]
+        
+        self.player.totalPayment = mPa + Constants.participation_fee + mQu
        
         return dict(
             conversionRate = Constants.exRate,
@@ -250,11 +240,12 @@ class Payment(Page):
 
         return (self.round_number == Constants.SG_endPeriods[-1]+1)
 
-page_sequence = [BeginExperiment,
-                 ShuffleWaitPage,
-                 GameDecision,
-                 DecisionWaitPage,
-                 RoundResult,
-                 OddPlayer,
-                 Payment
+page_sequence = [
+                BeginExperiment,
+                ShuffleWaitPage,
+                GameDecision,
+                DecisionWaitPage,
+                RoundResult,
+                OddPlayer,
+                Payment
                 ]

@@ -11,6 +11,8 @@ class BeginExperiment(Page):
             payoff_matrix1 = Constants.payoff_matrix1,
             payoff_matrix2 = Constants.payoff_matrix2,
             exRate=Constants.exRate,
+            contProb=Constants.contProb,
+            endProb=Constants.endProb,
             )
 
     def is_displayed(self):
@@ -220,8 +222,10 @@ class Payment(Page):
     def vars_for_template(self):
 
         mPo = self.player.participant.vars["totalPayoff"]
-        mPa = c(mPo).to_real_world_currency(self.session)
+        mPa = round(mPo/Constants.exRate,2)
         mQu = Constants.quiz_fee*self.participant.vars["myCorrectAns"]
+        
+        self.player.totalPayment = mPa + Constants.participation_fee + mQu
        
         return dict(
             conversionRate = Constants.exRate,

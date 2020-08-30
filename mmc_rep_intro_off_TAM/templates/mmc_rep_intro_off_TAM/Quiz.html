@@ -25,7 +25,7 @@
 	{% formfield player.ans_choice_3 label = ""%}
 
 	<div style="border: none;">
-        <h3 style="text-align: center; font-family: Proxima Nova;">Point Tables</h3>
+        <h3 style="text-align: center;">Points Tables</h3>
         {% include 'mmc_rep_intro_off_TAM/Payofftables.html' %}
 
         <hr style="clear:both;">
@@ -40,7 +40,7 @@
 	{% formfield player.ans_choice_6 label = ""%}
 
     <div style="border: none;">
-		<h3 style="text-align: center; font-family: Proxima Nova;">History Tables</h3>
+		<h3 style="text-align: center;">History Tables</h3>
 		{% include 'mmc_rep_intro_off_TAM/HistoryTableExample.html' %}
 		<hr style="clear:both;">
 	</div>
@@ -83,14 +83,14 @@
             document.getElementById("10_21").innerHTML=({{ payoff_matrix2|json }})[1][0];
             document.getElementById("11_21").innerHTML=({{ payoff_matrix2|json }})[1][1];
 
-            document.getElementById("00_12").innerHTML=({{ payoff_matrix1|json }})[0][0];
-            document.getElementById("01_12").innerHTML=({{ payoff_matrix1|json }})[0][1];
-            document.getElementById("10_12").innerHTML=({{ payoff_matrix1|json }})[1][0];
-            document.getElementById("11_12").innerHTML=({{ payoff_matrix1|json }})[1][1];
-            document.getElementById("00_22").innerHTML=({{ payoff_matrix2|json }})[0][0];
-            document.getElementById("01_22").innerHTML=({{ payoff_matrix2|json }})[0][1];
-            document.getElementById("10_22").innerHTML=({{ payoff_matrix2|json }})[1][0];
-            document.getElementById("11_22").innerHTML=({{ payoff_matrix2|json }})[1][1];
+            document.getElementById("00_12").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_12").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_12").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_12").innerHTML=({{ payoff_matrix2|json }})[1][1];
+            document.getElementById("00_22").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_22").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_22").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_22").innerHTML=({{ payoff_matrix1|json }})[1][1];
 
         }
 

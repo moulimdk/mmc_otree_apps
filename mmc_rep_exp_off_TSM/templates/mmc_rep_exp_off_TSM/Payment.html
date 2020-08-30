@@ -14,11 +14,38 @@
 {% block content %}
 
 	<div class="description">
-		<p style="text-align: center;"><br/>
-			The Participation Fee is ${{ myParticipation }}. From the quiz you received ${{ myQuiz }}.
+		<p>
+			Please write down the following details in the "Payment Sheet" given to you and turn it in to the experimenter for payment after taking the anonymous survey.
 		</p>
-		<p style="text-align: center;"><br/>
-			From the experiment you have received {{ myPoints }} points. The conversion rate is $1 for every {{ conversionRate }} points. You will receive {{ myTotalPayoff }} in total.
+		<br>
+		<ul>
+			<li>
+				Participation Payment : ${{ myParticipation }}
+			</li>
+			<br>
+			<li>
+				Quiz Payment : ${{ myQuiz }}
+			</li>
+			<br>
+			<li>
+				Total Points from experiment : {{ myPoints }}
+			</li>
+			<br>
+			<li>
+				Exchange Rate : {{ conversionRate }} points = $1
+			</li>
+			<br>
+			<li>
+				Dollar Equivalent of Points from experiment : {{ myPayoff }}
+			</li>
+			<br>
+			<li>
+				Total Payment : {{ myTotalPayoff }}
+			</li>
+		</ul>
+		<br>
+		<p style="text-align: center;">
+			Please take the Anonymous Survey.
 		</p>
 		<p style="text-align: center;">
 	       	<button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
@@ -26,11 +53,5 @@
 	       	</button>
 	    </p>
 	</div>
-
-{% endblock %}
-
-{% block scripts %}
-
-	{% include  'mmc_rep_exp_off_TSM/Scripts.html' %}
 
 {% endblock %}

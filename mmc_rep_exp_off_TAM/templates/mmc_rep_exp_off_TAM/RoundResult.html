@@ -2,23 +2,26 @@
 {% load otree static %}
 
 {% block app_styles %}
+
 	{% include 'mmc_rep_exp_off_TAM/CSS_details.html' %}
-	<style type="text/css">
-        .otree-timer{
-            display: none
-        }
-    </style>
+	
 {% endblock %}
 
 {% block title %}
-    Result of Round 
+    Round Result
 {% endblock %}
 
 {% block content %}
 
 	<div class="description">
 		
-		<p style="text-align: center; font-size: 24px;">Round No. #{{ roundNumber }}</p>
+		<p style="text-align: center; font-size: 24px;">
+			Round No. #{{ roundNumber }}
+		</p>
+
+		<p>
+			The round has ended. The following tables show the history of the round.
+		</p>
 
 		<h3 style="text-align: center;">History Tables</h3>
 

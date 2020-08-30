@@ -2,7 +2,7 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Begin Experiment
+    Reminder
 {% endblock %}
 
 {% block app_styles %}
@@ -14,9 +14,6 @@
 {% block content %}
 
 	<div class="description">
-		<h3>
-			Reminder
-		</h3>
 		<ul>
 			<li>
                 At the start of each round, you will be paired with one other randomly chosen participant who we will refer to as Other.
@@ -28,6 +25,10 @@
             <br>
             <li>
             	Each round will last for a random number of periods.
+            </li>
+            <br>
+            <li>
+            	At the end of each period, the round will continue to another period with probability {{ contProb }}% and end with probability {{ endProb }}%.
             </li>
             <br>
             <li>

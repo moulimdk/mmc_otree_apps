@@ -24,19 +24,6 @@
 			</h3>
 			<br>
 		</div>
-		<div id="h3_notanswered" style="display: none;">
-			<p>
-				You have not answered any questions.
-			</p>
-			<p>
-				You will get ${{ quiz_pay }} from the quiz.
-			</p>
-			<br>
-			<h3>
-				Questions with Correct Answers
-			</h3>
-			<br>
-		</div>
 		
 		{{ statement_1 }}
 		<br>
@@ -124,7 +111,7 @@
 		</p>
 		<br>
 		<p style="text-align: center;">
-			Please press the ''Start Experiment'' button below to proceed to the Quiz.
+			Please press the ''Start Experiment'' button below to proceed to the Experiment.
 			<br>
 	       	<button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
 	            Start Experiment
@@ -146,58 +133,52 @@
 		var c_7 = ({{ Correct_7|json }});
 		var c_8 = ({{ Correct_8|json }});
 
-		if ( {{ timedout|json }} == 0 ) {
-			show("h3_answered");
-			show("answered_1");
-			if ( {{ Chosen_1|json }} == c_1 ) {
-				document.getElementById("answered_1").style.color = "green";
-			} else {
-				document.getElementById("answered_1").style.color = "red";
-			}
-			show("answered_2");
-			if ( {{ Chosen_2|json }} == c_2 ) {
-				document.getElementById("answered_2").style.color = "green";
-			} else {
-				document.getElementById("answered_2").style.color = "red";
-			}
-			show("answered_3");
-			if ( {{ Chosen_3|json }} == c_3 ) {
-				document.getElementById("answered_3").style.color = "green";
-			} else {
-				document.getElementById("answered_3").style.color = "red";
-			}
-			show("answered_4");
-			if ( {{ Chosen_4|json }} == c_4 ) {
-				document.getElementById("answered_4").style.color = "green";
-			} else {
-				document.getElementById("answered_4").style.color = "red";
-			}
-			show("answered_5");
-			if ( {{ Chosen_5|json }} == c_5 ) {
-				document.getElementById("answered_5").style.color = "green";
-			} else {
-				document.getElementById("answered_5").style.color = "red";
-			}
-			show("answered_6");
-			if ( {{ Chosen_6|json }} == c_6 ) {
-				document.getElementById("answered_6").style.color = "green";
-			} else {
-				document.getElementById("answered_6").style.color = "red";
-			}
-			show("answered_7");
-			if ( {{ Chosen_7|json }} == c_7 ) {
-				document.getElementById("answered_7").style.color = "green";
-			} else {
-				document.getElementById("answered_7").style.color = "red";
-			}
-			show("answered_8");
-			if ( {{ Chosen_8|json }} == c_8 ) {
-				document.getElementById("answered_8").style.color = "green";
-			} else {
-				document.getElementById("answered_8").style.color = "red";
-			}
+		if ( {{ Chosen_1|json }} == c_1 ) {
+			document.getElementById("answered_1").style.color = "green";
 		} else {
-			show("h3_notanswered");
+			document.getElementById("answered_1").style.color = "red";
+		}
+		
+		if ( {{ Chosen_2|json }} == c_2 ) {
+			document.getElementById("answered_2").style.color = "green";
+		} else {
+			document.getElementById("answered_2").style.color = "red";
+		}
+		
+		if ( {{ Chosen_3|json }} == c_3 ) {
+			document.getElementById("answered_3").style.color = "green";
+		} else {
+			document.getElementById("answered_3").style.color = "red";
+		}
+		
+		if ( {{ Chosen_4|json }} == c_4 ) {
+			document.getElementById("answered_4").style.color = "green";
+		} else {
+			document.getElementById("answered_4").style.color = "red";
+		}
+		
+		if ( {{ Chosen_5|json }} == c_5 ) {
+			document.getElementById("answered_5").style.color = "green";
+		} else {
+			document.getElementById("answered_5").style.color = "red";
+		}
+		
+		if ( {{ Chosen_6|json }} == c_6 ) {
+			document.getElementById("answered_6").style.color = "green";
+		} else {
+			document.getElementById("answered_6").style.color = "red";
+		}
+		
+		if ( {{ Chosen_7|json }} == c_7 ) {
+			document.getElementById("answered_7").style.color = "green";
+		} else {
+			document.getElementById("answered_7").style.color = "red";
+		}
+		
+		if ( {{ Chosen_8|json }} == c_8 ) {
+			document.getElementById("answered_8").style.color = "green";
+		} else {
+			document.getElementById("answered_8").style.color = "red";
 		}
 
         getPayoffs();
@@ -208,19 +189,19 @@
             document.getElementById("01_11").innerHTML=({{ payoff_matrix1|json }})[0][1];
             document.getElementById("10_11").innerHTML=({{ payoff_matrix1|json }})[1][0];
             document.getElementById("11_11").innerHTML=({{ payoff_matrix1|json }})[1][1];
-            document.getElementById("00_21").innerHTML=({{ payoff_matrix1|json }})[0][0];
-            document.getElementById("01_21").innerHTML=({{ payoff_matrix1|json }})[0][1];
-            document.getElementById("10_21").innerHTML=({{ payoff_matrix1|json }})[1][0];
-            document.getElementById("11_21").innerHTML=({{ payoff_matrix1|json }})[1][1];
+            document.getElementById("00_21").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_21").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_21").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_21").innerHTML=({{ payoff_matrix2|json }})[1][1];
 
             document.getElementById("00_12").innerHTML=({{ payoff_matrix2|json }})[0][0];
             document.getElementById("01_12").innerHTML=({{ payoff_matrix2|json }})[0][1];
             document.getElementById("10_12").innerHTML=({{ payoff_matrix2|json }})[1][0];
             document.getElementById("11_12").innerHTML=({{ payoff_matrix2|json }})[1][1];
-            document.getElementById("00_22").innerHTML=({{ payoff_matrix2|json }})[0][0];
-            document.getElementById("01_22").innerHTML=({{ payoff_matrix2|json }})[0][1];
-            document.getElementById("10_22").innerHTML=({{ payoff_matrix2|json }})[1][0];
-            document.getElementById("11_22").innerHTML=({{ payoff_matrix2|json }})[1][1];
+            document.getElementById("00_22").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_22").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_22").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_22").innerHTML=({{ payoff_matrix1|json }})[1][1];
 
         }
 

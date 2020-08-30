@@ -65,7 +65,6 @@ class Subsession(BaseSubsession):
 
             random.shuffle(players)
             matrix = self.pairs(players)
-            print("First Period of a Supergame:",matrix)
 
             self.set_group_matrix(matrix)
             for group in self.get_groups():
@@ -181,13 +180,13 @@ class Group(BaseGroup):
 
             p.participant.vars["roundPayoffHistory"][p.roundNumber] += p.myPayoffR+p.myPayoffB
 
-            print("Payoff History:",p.participant.vars["roundPayoffHistory"])
+            # print("Payoff History:",p.participant.vars["roundPayoffHistory"])
 
             if self.round_number in Constants.SG_endPeriods:
 
                 p.participant.vars["totalPayoff"] += p.participant.vars["roundPayoffHistory"][p.roundNumber]
 
-                print("Cumulative Payoff:", p.participant.vars["totalPayoff"])
+                # print("Cumulative Payoff:", p.participant.vars["totalPayoff"])
 
                 p.myCumulativePayoff = p.participant.vars["totalPayoff"]
 
@@ -196,14 +195,14 @@ class Player(BasePlayer):
     ## Defining player variables
 
     myChoiceR = models.IntegerField()
-    myPayoffR = models.CurrencyField()
+    myPayoffR = models.FloatField()
     myChoiceHistoryR = models.StringField()
     myPayoffHistoryR = models.StringField()
     otherChoiceHistoryR = models.StringField()
     otherPayoffHistoryR = models.StringField()
 
     myChoiceB = models.IntegerField()
-    myPayoffB = models.CurrencyField()
+    myPayoffB = models.FloatField()
     myChoiceHistoryB = models.StringField()
     myPayoffHistoryB = models.StringField()
     otherChoiceHistoryB = models.StringField()
@@ -216,9 +215,10 @@ class Player(BasePlayer):
     roundNumber = models.IntegerField()
     roundHistory = models.StringField()
     numberRoundCurrentRound = models.IntegerField()
-    myCumulativePayoff = models.CurrencyField()
+    myCumulativePayoff = models.FloatField()
     totalPeriod = models.IntegerField()
     timeout = models.IntegerField()
+    totalPayment = models.FloatField()
 
     # Initialization of participant variables
     def connect(self,rN):
@@ -292,9 +292,9 @@ class Player(BasePlayer):
         self.totalPeriod = Constants.SG_lengths[int(roundPos)]
 
         self.participant.vars["roundPayoffHistory"][self.roundNumber] = self.totalPeriod*(Constants.expPoints["R"]+Constants.expPoints["B"])
-        print("Payoff History:",self.participant.vars["roundPayoffHistory"])
+        # print("Payoff History:",self.participant.vars["roundPayoffHistory"])
         self.participant.vars["totalPayoff"] += self.participant.vars["roundPayoffHistory"][self.roundNumber]
-        print("Cumulative Payoff:", self.participant.vars["totalPayoff"])
+        # print("Cumulative Payoff:", self.participant.vars["totalPayoff"])
         self.myCumulativePayoff = self.participant.vars["totalPayoff"]
         
         self.participant.vars["oddGroup"] = 0

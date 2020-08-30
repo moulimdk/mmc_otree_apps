@@ -8,7 +8,12 @@ from copy import deepcopy
 class BeginInstructions(Page):
     """Page at the beginning of Instructions"""
 
+    def before_next_page(self):
+
+        self.participant.vars['expiry'] = time.time()+Constants.time_intro*60
+
     def vars_for_template(self):
+
         return dict(
             time_intro=Constants.time_intro,
             minExpTime=Constants.minExpTime,
@@ -38,6 +43,7 @@ class Welcome(Page):
             num_ques=Constants.num_ques,
             )
 
+
 class PayoffIntroduction(Page):
 
     timer_text = 'Time remaining on Instructions:'
@@ -58,14 +64,17 @@ class PayoffIntroduction(Page):
             expPoints_Blue=Constants.expPoints_Blue,
             )
 
+
 class GameIntroduction(Page):
 
     timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
+      
       return self.participant.vars['expiry'] - time.time()
 
     def vars_for_template(self):
+        
         return dict(
             time_period=Constants.time_round,
             payoff_matrix1=Constants.payoff_matrix1,
@@ -73,35 +82,43 @@ class GameIntroduction(Page):
             exRate=Constants.exRate,
             )
 
+
 class HistoryIntroduction(Page):
 
     timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
-      return self.participant.vars['expiry'] - time.time()
+        
+        return self.participant.vars['expiry'] - time.time()
 
     def vars_for_template(self):
+        
         return dict(
             dieN=Constants.dieN,
             payoff_matrix1=Constants.payoff_matrix1,
             payoff_matrix2=Constants.payoff_matrix2,
             )
 
+
 class DecisionIntroduction(Page):
 
     timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
-      return self.participant.vars['expiry'] - time.time()
+        
+        return self.participant.vars['expiry'] - time.time()
+
 
 class Payment(Page):
 
     timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
-      return self.participant.vars['expiry'] - time.time()
+        
+        return self.participant.vars['expiry'] - time.time()
 
     def vars_for_template(self):
+        
         return dict(
             Rounds=Constants.num_matches,
             dieN=Constants.dieN,
@@ -114,15 +131,14 @@ class Payment(Page):
             expPoints_Blue=Constants.expPoints_Blue,
             )
 
-class Quiz(Page):
 
-    timer_text = 'Time remaining on Quiz:'
-    timeout_seconds = Constants.time_quiz*60
+class Quiz(Page):
 
     form_model = 'player'
     form_fields = ['ans_choice_1','ans_choice_2','ans_choice_3','ans_choice_4','ans_choice_5','ans_choice_6','ans_choice_7','ans_choice_8']
     
     def vars_for_template(self):
+        
         return dict(
             statement_1 = self.player.ques_stat_1,
             statement_2 = self.player.ques_stat_2,
@@ -138,13 +154,12 @@ class Quiz(Page):
 
     def before_next_page(self):
         
-        if self.timeout_happened:
-            self.player.timedout = 1
         self.player.answer_check()
 
 class Result(Page):
 
     def vars_for_template(self):
+        
         return dict(
             timedout = self.player.timedout,
             correct_ans = self.player.myCorrectAns,
@@ -189,4 +204,4 @@ page_sequence = [
                 Payment, 
                 Quiz, 
                 Result
-		]
+                ]

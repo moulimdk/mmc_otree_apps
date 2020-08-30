@@ -4,6 +4,7 @@ from .models import Constants
 import time
 from copy import deepcopy
 
+
 class BeginInstructions(Page):
     """Page at the beginning of Instructions"""
 
@@ -19,9 +20,12 @@ class BeginInstructions(Page):
             maxExpTime=Constants.maxExpTime,
             )
 
+
 class Welcome(Page):
     """First page"""
     
+    timer_text = 'Time remaining on Instructions:'
+
     def get_timeout_seconds(self):
 
         return self.participant.vars['expiry'] - time.time()
@@ -39,7 +43,10 @@ class Welcome(Page):
             num_ques=Constants.num_ques,
             )
 
+
 class PayoffIntroduction(Page):
+
+    timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
         
@@ -59,7 +66,10 @@ class PayoffIntroduction(Page):
             expPoints_Blue=Constants.expPoints_Blue,
             )
 
+
 class GameIntroduction(Page):
+
+    timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
         
@@ -74,7 +84,10 @@ class GameIntroduction(Page):
             exRate=Constants.exRate,
             )
 
+
 class HistoryIntroduction(Page):
+
+    timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
       
@@ -88,13 +101,19 @@ class HistoryIntroduction(Page):
             payoff_matrix2=Constants.payoff_matrix2,
             )
 
+
 class DecisionIntroduction(Page):
+
+    timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
         
         return self.participant.vars['expiry'] - time.time()
 
+
 class Payment(Page):
+
+    timer_text = 'Time remaining on Instructions:'
 
     def get_timeout_seconds(self):
         
@@ -114,10 +133,8 @@ class Payment(Page):
             expPoints_Blue=Constants.expPoints_Blue,
             )
 
-class Quiz(Page):
 
-    timer_text = 'Time remaining on Quiz:'
-    timeout_seconds = Constants.time_quiz*60
+class Quiz(Page):
 
     form_model = 'player'
     form_fields = ['ans_choice_1','ans_choice_2','ans_choice_3','ans_choice_4','ans_choice_5','ans_choice_6','ans_choice_7','ans_choice_8']
@@ -139,16 +156,14 @@ class Quiz(Page):
 
     def before_next_page(self):
         
-        if self.timeout_happened:
-            self.player.timedout = 1
         self.player.answer_check()
+
 
 class Result(Page):
 
     def vars_for_template(self):
         
         return dict(
-            timedout = self.player.timedout,
             correct_ans = self.player.myCorrectAns,
             quiz_ques = Constants.num_ques,
             quiz_pay = self.player.myQuizPay,
@@ -179,6 +194,7 @@ class Result(Page):
             Correct_7 = Constants.choices_actions[(self.player.correct_ans_7)-1][1],
             Correct_8 = Constants.choices_actions[(self.player.correct_ans_8)-1][1],
             )
+
 
 page_sequence = [
                 BeginInstructions, 

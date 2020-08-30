@@ -190,10 +190,7 @@ class Player(BasePlayer):
     ques_stat_8 = Constants.questions[8]['statement']
 
     myCorrectAns = models.IntegerField(initial=0)
-    myQuizStatus = models.BooleanField(initial=0)
     myQuizPay = models.FloatField(initial=0)
-    timedout = models.IntegerField(initial=0)
-
 
     def answer_check(self):
         if self.ans_choice_1 == self.correct_ans_1:

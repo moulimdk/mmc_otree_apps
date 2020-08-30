@@ -11,6 +11,8 @@ class BeginExperiment(Page):
             payoff_matrix1 = Constants.payoff_matrix1,
             payoff_matrix2 = Constants.payoff_matrix2,
             exRate=Constants.exRate,
+            contProb=Constants.contProb,
+            endProb=Constants.endProb,
             )
 
     def is_displayed(self):
@@ -220,12 +222,10 @@ class Payment(Page):
     def vars_for_template(self):
 
         mPo = self.player.participant.vars["totalPayoff"]
-        print("////////////////")
-        print(" ")
-        print(self.player.participant.label, ": Cumulative Payoffs: ", mPo)
-        # print("Cumulative Payoffs:", mPo)
-        mPa = c(mPo).to_real_world_currency(self.session)
+        mPa = mPo*Constants.exRate
         mQu = Constants.quiz_fee*self.participant.vars["myCorrectAns"]
+        
+        self.player.totalPayment = mPa + Constants.participation_fee + mQu
        
         return dict(
             conversionRate = Constants.exRate,
@@ -240,11 +240,12 @@ class Payment(Page):
 
         return (self.round_number == Constants.SG_endPeriods[-1]+1)
 
-page_sequence = [BeginExperiment,
-                 ShuffleWaitPage,
-                 GameDecision,
-                 DecisionWaitPage,
-                 RoundResult,
-                 OddPlayer,
-                 Payment
+page_sequence = [
+                BeginExperiment,
+                ShuffleWaitPage,
+                GameDecision,
+                DecisionWaitPage,
+                RoundResult,
+                OddPlayer,
+                Payment
                 ]

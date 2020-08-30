@@ -3,11 +3,6 @@
 
 {% block app_styles %}
 	{% include 'mmc_rep_intro_off_TAM/CSS_details.html' %}
-	<style type="text/css">
-        .otree-timer{
-            display: none
-        }
-    </style>
 {% endblock %}
 
 {% block title %}
@@ -15,17 +10,211 @@
 {% endblock %}
 
 {% block content %}
-<div class="description">
-	<p>
-		You have correctly answered {{ correct_ans }} out of {{ quiz_ques }} questions.
-	</p>
-	<p>
-		You will get ${{ quiz_pay }} from the quiz.
-	</p>
-	<p style="text-align: center;">
-       <button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
-            Experiment
-       </button>
-    </p>
-</div>
+	<div class="description">
+		<div id="h3_answered">
+			<p>
+				You have correctly answered {{ correct_ans }} out of {{ quiz_ques }} questions.
+			</p>
+			<p>
+				You will get ${{ quiz_pay }} from the quiz.
+			</p>
+			<br>
+			<h3>
+				Questions with Correct and Chosen Answers
+			</h3>
+			<br>
+		</div>
+		
+		{{ statement_1 }}
+		<br>
+		<p id="answered_1">
+			Chosen Answer: {{ Chosen_1 }}
+		</p>
+		<p>
+			Correct Answer: {{ Correct_1 }}
+		</p>
+		<br>
+		{{ statement_2 }}
+		<br>
+		<p id="answered_2">
+			Chosen Answer: {{ Chosen_2 }}
+		</p>
+		<p>
+			Correct Answer: {{ Correct_2 }}
+		</p>
+		<br>
+		{{ statement_3 }}
+		<br>
+		<p id="answered_3">
+			Chosen Answer: {{ Chosen_3 }}
+		</p>
+		<p>
+			Correct Answer: {{ Correct_3 }}
+		</p>
+		<br>
+		<div style="border: none;">
+	        <h3 style="text-align: center;">Points Tables</h3>
+	        {% include 'mmc_rep_intro_off_TAM/Payofftables.html' %}
+
+	        <hr style="clear:both;">
+	    </div>
+		<br>
+	    {{ statement_4 }}
+		<br>
+		<p id="answered_4">
+			Chosen Answer: {{ Chosen_4 }}
+		</p>
+		<p>
+			Correct Answer: {{ Correct_4 }}
+		</p>
+		<br>
+		{{ statement_6 }}
+		<br>
+		<p id="answered_6">
+			Chosen Answer: {{ Chosen_6 }}
+		</p>
+		<p>
+			Correct Answer: {{ Correct_6 }}
+		</p>
+		<br>
+	    <div style="border: none;">
+			<h3 style="text-align: center;">History Tables</h3>
+			{% include 'mmc_rep_intro_off_TAM/HistoryTableExample.html' %}
+			<hr style="clear:both;">
+		</div>
+		<br>
+		{{ statement_5 }} 
+		<br>
+		<p id="answered_5">
+			Chosen Answer: {{ Chosen_5 }}
+		</p>
+		<p>
+			Correct Answer: {{ Correct_5 }}
+		</p>
+		<br>
+		{{ statement_7 }}
+		<br>
+		<p id="answered_7">
+			Chosen Answer: {{ Chosen_7 }}
+		</p>
+		<p>
+			Correct Answer: {{ Correct_7 }}
+		</p>
+		<br>
+		{{ statement_8 }}
+		<br>
+		<p id="answered_8">
+			Chosen Answer: {{ Chosen_8 }}
+		</p>
+		<p>
+			Correct Answer: {{ Correct_8 }}
+		</p>
+		<br>
+		<p style="text-align: center;">
+			Please press the ''Start Experiment'' button below to proceed to the Experiment.
+			<br>
+	       	<button class="btn btn-primary btn-large" id="NextButton" style="display: inline-block; font-size: 22px; background-color: #024b30;">
+	            Start Experiment
+	       </button>
+	    </p>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+
+	<script type="text/javascript">
+
+		var c_1 = ({{ Correct_1|json }});
+		var c_2 = ({{ Correct_2|json }});
+		var c_3 = ({{ Correct_3|json }});
+		var c_4 = ({{ Correct_4|json }});
+		var c_5 = ({{ Correct_5|json }});
+		var c_6 = ({{ Correct_6|json }});
+		var c_7 = ({{ Correct_7|json }});
+		var c_8 = ({{ Correct_8|json }});
+
+		if ( {{ Chosen_1|json }} == c_1 ) {
+			document.getElementById("answered_1").style.color = "green";
+		} else {
+			document.getElementById("answered_1").style.color = "red";
+		}
+		
+		if ( {{ Chosen_2|json }} == c_2 ) {
+			document.getElementById("answered_2").style.color = "green";
+		} else {
+			document.getElementById("answered_2").style.color = "red";
+		}
+		
+		if ( {{ Chosen_3|json }} == c_3 ) {
+			document.getElementById("answered_3").style.color = "green";
+		} else {
+			document.getElementById("answered_3").style.color = "red";
+		}
+		
+		if ( {{ Chosen_4|json }} == c_4 ) {
+			document.getElementById("answered_4").style.color = "green";
+		} else {
+			document.getElementById("answered_4").style.color = "red";
+		}
+		
+		if ( {{ Chosen_5|json }} == c_5 ) {
+			document.getElementById("answered_5").style.color = "green";
+		} else {
+			document.getElementById("answered_5").style.color = "red";
+		}
+		
+		if ( {{ Chosen_6|json }} == c_6 ) {
+			document.getElementById("answered_6").style.color = "green";
+		} else {
+			document.getElementById("answered_6").style.color = "red";
+		}
+		
+		if ( {{ Chosen_7|json }} == c_7 ) {
+			document.getElementById("answered_7").style.color = "green";
+		} else {
+			document.getElementById("answered_7").style.color = "red";
+		}
+		
+		if ( {{ Chosen_8|json }} == c_8 ) {
+			document.getElementById("answered_8").style.color = "green";
+		} else {
+			document.getElementById("answered_8").style.color = "red";
+		}
+
+        getPayoffs();
+
+        function getPayoffs() {
+
+            document.getElementById("00_11").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_11").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_11").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_11").innerHTML=({{ payoff_matrix1|json }})[1][1];
+            document.getElementById("00_21").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_21").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_21").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_21").innerHTML=({{ payoff_matrix2|json }})[1][1];
+
+            document.getElementById("00_12").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_12").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_12").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_12").innerHTML=({{ payoff_matrix2|json }})[1][1];
+            document.getElementById("00_22").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_22").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_22").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_22").innerHTML=({{ payoff_matrix1|json }})[1][1];
+
+        }
+
+        function hide(target) {
+			var x = document.getElementById(target);
+			x.style.display = "none";
+		}
+
+		function show(target) {
+			var x = document.getElementById(target);
+			x.style.display = "block";
+		}
+
+    </script>
+	
 {% endblock %}

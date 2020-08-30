@@ -8,12 +8,7 @@
 {% block app_styles %}
 	
 	{% include 'mmc_rep_exp_off_TAM/CSS_details.html' %}
-	<style type="text/css">
-        .otree-timer{
-            display: none
-        }
-    </style>
-
+	
 {% endblock%}
 
 {% block content %}
@@ -24,13 +19,15 @@
 		<div>
 			You could not be paired with another participant for this Round. This Round lasted for {{ totalPeriods }} period(s). 
 		</div>
+		<br>
 		<div>
 			You are given {{ expPointsR }} points for each period in <div class="redbox">Red Game</div>.
 		</div>
+		<br>
 		<div>
 			You are given {{ expPointsB }} points for each period in <div class="bluebox">Blue Game</div>.
 		</div>
-
+		<br>
 		<h3 style="text-align: center; font-size: 24px;">History Tables</h3>
 
 		{% include 'mmc_rep_exp_off_TAM/HistoryTable.html' %}

@@ -34,9 +34,7 @@ class Constants(BaseConstants):
     exRate = int(1/settings.SESSION_CONFIGS[0].get('real_world_currency_per_point'))  # Exchange Rate (points to dollar)
     
     time_period = settings.SESSION_CONFIGS[0].get('time_period')  # Total time allotted to a period
-    time_begin = settings.SESSION_CONFIGS[0].get('time_welcome')  # Time allotted in the first page
-    time_next = settings.SESSION_CONFIGS[0].get('time_next')  # Time to next round
-
+    
 
 class Subsession(BaseSubsession):
     
@@ -56,8 +54,6 @@ class Subsession(BaseSubsession):
             else:
                 matrix.append(players[0:-1])
                 matrix.append([players[-1]])
-
-            print("First Period of a supergame:",matrix)
 
             self.set_group_matrix(matrix)
             
@@ -110,6 +106,13 @@ class Group(BaseGroup):
         for i in range(int(nplayers)):
 
             me = players[i]
+            me.periodNumber = temp
+            me.roundNumber = roundPos + 1
+
+            me.rollHistory += ","+str(roll)
+            me.periodHistory += ","+str(temp)
+            me.roundHistory += ","+str(me.roundNumber)
+
             myActionR = me.myChoiceR
             myActionB = me.myChoiceB
 
@@ -128,15 +131,15 @@ class Group(BaseGroup):
             otherRPayoff = Constants.payoff_matrix1[otherRaction][myActionR]
             otherBPayoff = Constants.payoff_matrix2[otherBaction][myActionB]
 
-            me.myChoiceHistoryB = me.myChoiceHistoryB+","+str(myActionB)
-            me.myChoiceHistoryR = me.myChoiceHistoryR+","+str(myActionR)
-            me.myPayoffHistoryB = me.myPayoffHistoryB+","+str(me.myPayoffB)
-            me.myPayoffHistoryR = me.myPayoffHistoryR+","+str(me.myPayoffR)
+            me.myChoiceHistoryB += ","+str(myActionB)
+            me.myChoiceHistoryR += ","+str(myActionR)
+            me.myPayoffHistoryB += ","+str(me.myPayoffB)
+            me.myPayoffHistoryR += ","+str(me.myPayoffR)
 
-            me.otherChoiceHistoryB = me.otherChoiceHistoryB+","+str(otherBaction)
-            me.otherChoiceHistoryR = me.otherChoiceHistoryR+","+str(otherRaction)
-            me.otherPayoffHistoryB = me.otherPayoffHistoryB+","+str(otherBPayoff)
-            me.otherPayoffHistoryR = me.otherPayoffHistoryR+","+str(otherRPayoff)
+            me.otherChoiceHistoryB += ","+str(otherBaction)
+            me.otherChoiceHistoryR += ","+str(otherRaction)
+            me.otherPayoffHistoryB += ","+str(otherBPayoff)
+            me.otherPayoffHistoryR += ","+str(otherRPayoff)
 
             me.participant.vars["myChoiceHistoryB"] = me.myChoiceHistoryB
             me.participant.vars["myPayoffHistoryB"] = me.myPayoffHistoryB
@@ -147,25 +150,15 @@ class Group(BaseGroup):
             me.participant.vars["otherChoiceHistoryR"] = me.otherChoiceHistoryR
             me.participant.vars["otherPayoffHistoryR"] = me.otherPayoffHistoryR
 
-            me.periodNumber = temp
-            me.roundNumber = roundPos + 1
-            me.rollHistory = me.rollHistory+","+str(roll)
-            me.periodHistory = me.periodHistory+","+str(temp)
-            me.roundHistory = me.roundHistory+","+str(me.roundNumber)
-
             me.participant.vars["rollHistory"] = me.rollHistory
             me.participant.vars["periodHistory"] = me.periodHistory
             me.participant.vars["roundHistory"] = me.roundHistory
 
             me.participant.vars["roundPayoffHistory"][me.roundNumber] += me.myPayoffR+me.myPayoffB
 
-            print("Payoff History:",me.participant.vars["roundPayoffHistory"])
-
             if self.round_number in Constants.SG_endPeriods:
 
                 me.participant.vars["totalPayoff"] += me.participant.vars["roundPayoffHistory"][me.roundNumber]
-
-                print("Cumulative Payoff:", me.participant.vars["totalPayoff"])
 
                 me.myCumulativePayoff = me.participant.vars["totalPayoff"]
 
@@ -174,14 +167,14 @@ class Player(BasePlayer):
     ## Defining player variables
 
     myChoiceR = models.IntegerField()
-    myPayoffR = models.CurrencyField()
+    myPayoffR = models.FloatField()
     myChoiceHistoryR = models.StringField()
     myPayoffHistoryR = models.StringField()
     otherChoiceHistoryR = models.StringField()
     otherPayoffHistoryR = models.StringField()
 
     myChoiceB = models.IntegerField()
-    myPayoffB = models.CurrencyField()
+    myPayoffB = models.FloatField()
     myChoiceHistoryB = models.StringField()
     myPayoffHistoryB = models.StringField()
     otherChoiceHistoryB = models.StringField()
@@ -194,9 +187,10 @@ class Player(BasePlayer):
     roundNumber = models.IntegerField()
     roundHistory = models.StringField()
     numberRoundCurrentRound = models.IntegerField()
-    myCumulativePayoff = models.CurrencyField()
+    myCumulativePayoff = models.FloatField()
     totalPeriod = models.IntegerField()
     timeout = models.IntegerField()
+    totalPayment = models.FloatField()
 
     # Initialization of participant variables
     def connect(self,rN):
@@ -262,7 +256,6 @@ class Player(BasePlayer):
         self.periodHistory = self.in_round((self.round_number - 1)).periodHistory
         self.roundHistory = self.in_round((self.round_number - 1)).roundHistory
 
-
     # Method for odd players
     def oddPlayerPayoff(self):
 
@@ -271,9 +264,7 @@ class Player(BasePlayer):
         self.totalPeriod = Constants.SG_lengths[int(roundPos)]
 
         self.participant.vars["roundPayoffHistory"][self.roundNumber] = self.totalPeriod*(Constants.expPoints["R"]+Constants.expPoints["B"])
-        print("Payoff History:",self.participant.vars["roundPayoffHistory"])
         self.participant.vars["totalPayoff"] += self.participant.vars["roundPayoffHistory"][self.roundNumber]
-        print("Cumulative Payoff:", self.participant.vars["totalPayoff"])
         self.myCumulativePayoff = self.participant.vars["totalPayoff"]
         
         self.participant.vars["oddGroup"] = 0

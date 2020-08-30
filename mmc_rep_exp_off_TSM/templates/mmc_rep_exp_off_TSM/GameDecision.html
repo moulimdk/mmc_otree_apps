@@ -150,12 +150,14 @@
 	</script>
 	
 	<script>
+
 		$(function () {
 	        $('.otree-timer__time-left').on('update.countdown', function (event) {
-	            if (event.offset.totalSeconds === 10) {
+	            if (event.offset.totalSeconds === 30) {
 	                $('.otree-timer').show();
 	            }
 	        });
 	    });
+	    
 	</script>
 {% endblock %}
