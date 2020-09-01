@@ -222,7 +222,7 @@ class Payment(Page):
     def vars_for_template(self):
 
         mPo = self.player.participant.vars["totalPayoff"]
-        mPa = mPo*Constants.exRate
+        mPa = round(mPo/Constants.exRate,2)
         mQu = Constants.quiz_fee*self.participant.vars["myCorrectAns"]
         
         self.player.totalPayment = mPa + Constants.participation_fee + mQu

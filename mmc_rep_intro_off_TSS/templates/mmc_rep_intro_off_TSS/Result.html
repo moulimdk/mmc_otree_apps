@@ -11,7 +11,7 @@
 
 {% block content %}
 	<div class="description">
-		<div id="h3_answered" style="display: none;">
+		<div id="h3_answered">
 			<p>
 				You have correctly answered {{ correct_ans }} out of {{ quiz_ques }} questions.
 			</p>
@@ -27,7 +27,7 @@
 		
 		{{ statement_1 }}
 		<br>
-		<p id="answered_1" style="display: none;">
+		<p id="answered_1">
 			Chosen Answer: {{ Chosen_1 }}
 		</p>
 		<p>
@@ -36,7 +36,7 @@
 		<br>
 		{{ statement_2 }}
 		<br>
-		<p id="answered_2" style="display: none;">
+		<p id="answered_2">
 			Chosen Answer: {{ Chosen_2 }}
 		</p>
 		<p>
@@ -45,7 +45,7 @@
 		<br>
 		{{ statement_3 }}
 		<br>
-		<p id="answered_3" style="display: none;">
+		<p id="answered_3">
 			Chosen Answer: {{ Chosen_3 }}
 		</p>
 		<p>
@@ -61,7 +61,7 @@
 		<br>
 	    {{ statement_4 }}
 		<br>
-		<p id="answered_4" style="display: none;">
+		<p id="answered_4">
 			Chosen Answer: {{ Chosen_4 }}
 		</p>
 		<p>
@@ -70,7 +70,7 @@
 		<br>
 		{{ statement_6 }}
 		<br>
-		<p id="answered_6" style="display: none;">
+		<p id="answered_6">
 			Chosen Answer: {{ Chosen_6 }}
 		</p>
 		<p>
@@ -85,7 +85,7 @@
 		<br>
 		{{ statement_5 }} 
 		<br>
-		<p id="answered_5" style="display: none;">
+		<p id="answered_5">
 			Chosen Answer: {{ Chosen_5 }}
 		</p>
 		<p>
@@ -94,7 +94,7 @@
 		<br>
 		{{ statement_7 }}
 		<br>
-		<p id="answered_7" style="display: none;">
+		<p id="answered_7">
 			Chosen Answer: {{ Chosen_7 }}
 		</p>
 		<p>
@@ -103,7 +103,7 @@
 		<br>
 		{{ statement_8 }}
 		<br>
-		<p id="answered_8" style="display: none;">
+		<p id="answered_8">
 			Chosen Answer: {{ Chosen_8 }}
 		</p>
 		<p>
@@ -189,19 +189,19 @@
             document.getElementById("01_11").innerHTML=({{ payoff_matrix1|json }})[0][1];
             document.getElementById("10_11").innerHTML=({{ payoff_matrix1|json }})[1][0];
             document.getElementById("11_11").innerHTML=({{ payoff_matrix1|json }})[1][1];
-            document.getElementById("00_21").innerHTML=({{ payoff_matrix2|json }})[0][0];
-            document.getElementById("01_21").innerHTML=({{ payoff_matrix2|json }})[0][1];
-            document.getElementById("10_21").innerHTML=({{ payoff_matrix2|json }})[1][0];
-            document.getElementById("11_21").innerHTML=({{ payoff_matrix2|json }})[1][1];
+            document.getElementById("00_21").innerHTML=({{ payoff_matrix1|json }})[0][0];
+            document.getElementById("01_21").innerHTML=({{ payoff_matrix1|json }})[0][1];
+            document.getElementById("10_21").innerHTML=({{ payoff_matrix1|json }})[1][0];
+            document.getElementById("11_21").innerHTML=({{ payoff_matrix1|json }})[1][1];
 
             document.getElementById("00_12").innerHTML=({{ payoff_matrix2|json }})[0][0];
             document.getElementById("01_12").innerHTML=({{ payoff_matrix2|json }})[0][1];
             document.getElementById("10_12").innerHTML=({{ payoff_matrix2|json }})[1][0];
             document.getElementById("11_12").innerHTML=({{ payoff_matrix2|json }})[1][1];
-            document.getElementById("00_22").innerHTML=({{ payoff_matrix1|json }})[0][0];
-            document.getElementById("01_22").innerHTML=({{ payoff_matrix1|json }})[0][1];
-            document.getElementById("10_22").innerHTML=({{ payoff_matrix1|json }})[1][0];
-            document.getElementById("11_22").innerHTML=({{ payoff_matrix1|json }})[1][1];
+            document.getElementById("00_22").innerHTML=({{ payoff_matrix2|json }})[0][0];
+            document.getElementById("01_22").innerHTML=({{ payoff_matrix2|json }})[0][1];
+            document.getElementById("10_22").innerHTML=({{ payoff_matrix2|json }})[1][0];
+            document.getElementById("11_22").innerHTML=({{ payoff_matrix2|json }})[1][1];
 
         }
 

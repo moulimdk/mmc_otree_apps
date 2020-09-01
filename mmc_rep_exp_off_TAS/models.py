@@ -160,14 +160,14 @@ class Player(BasePlayer):
     ## Defining player variables
 
     myChoiceR = models.IntegerField()
-    myPayoffR = models.CurrencyField()
+    myPayoffR = models.FloatField()
     myChoiceHistoryR = models.StringField()
     myPayoffHistoryR = models.StringField()
     otherChoiceHistoryR = models.StringField()
     otherPayoffHistoryR = models.StringField()
 
     myChoiceB = models.IntegerField()
-    myPayoffB = models.CurrencyField()
+    myPayoffB = models.FloatField()
     myChoiceHistoryB = models.StringField()
     myPayoffHistoryB = models.StringField()
     otherChoiceHistoryB = models.StringField()
@@ -180,10 +180,10 @@ class Player(BasePlayer):
     roundNumber = models.IntegerField()
     roundHistory = models.StringField()
     numberRoundCurrentRound = models.IntegerField()
-    myCumulativePayoff = models.CurrencyField()
+    myCumulativePayoff = models.FloatField()
     totalPeriod = models.IntegerField()
     timeout = models.IntegerField()
-    totalPayment = models.CurrencyField()
+    totalPayment = models.FloatField()
 
     # Initialization of participant variables
     def connect(self,rN):
