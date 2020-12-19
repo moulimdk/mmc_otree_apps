@@ -1,4 +1,4 @@
 # mmc_otree_apps
-Otree app for "Multiple Contact with Symmetric and Asymmetric Prisoner's Dilemma Games"
+Otree app for "Tacit Collusion with Multiple Contacts"
 
-I use this app for conducting experiments for my project "Multiple Contact with Symmetric and Asymmetric Prisoner's Dilemma Games" in the VERNON SMITH EXPERIMENTAL ECONOMICS LABORATORY at Purdue University.
+I use this app for conducting experiments for my project "Tacit Collusion with Multiple Contacts" in the VERNON SMITH EXPERIMENTAL ECONOMICS LABORATORY at Purdue University.
